@@ -43,6 +43,9 @@ dependencies {
     implementation 'com.android.billingclient:billing:5.1.0'
     implementation 'com.google.code.gson:gson:2.10'
     implementation 'com.google.guava:guava:31.1-android'
+    implementation files('../TMessagesProj/libs/utilcodeEx-1.2.28.aar')
+    implementation 'io.github.cdimascio:dotenv-java:2.3.2'
+    implementation 'androidx.appcompat:appcompat:1.4.0'
 
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
 }

@@ -46,7 +46,7 @@ android {
         coreLibraryDesugaringEnabled true
     }
 
-    signingConfigs {
+    /*signingConfigs {
         debug {
             storeFile file("../TMessagesProj/config/release.keystore")
             storePassword RELEASE_STORE_PASSWORD
@@ -60,13 +60,13 @@ android {
             keyAlias RELEASE_KEY_ALIAS
             keyPassword RELEASE_KEY_PASSWORD
         }
-    }
+    }*/
 
     buildTypes {
         debug {
             debuggable true
             jniDebuggable true
-            signingConfig signingConfigs.debug
+//            signingConfig signingConfigs.debug
             applicationIdSuffix ".beta"
             minifyEnabled false
             shrinkResources false
@@ -78,7 +78,7 @@ android {
         standalone {
             debuggable false
             jniDebuggable false
-            signingConfig signingConfigs.release
+//            signingConfig signingConfigs.release
             applicationIdSuffix ".web"
             minifyEnabled true
             multiDexEnabled true
@@ -89,7 +89,7 @@ android {
         release {
             debuggable false
             jniDebuggable false
-            signingConfig signingConfigs.release
+//            signingConfig signingConfigs.release
             minifyEnabled true
             shrinkResources false
             multiDexEnabled true
