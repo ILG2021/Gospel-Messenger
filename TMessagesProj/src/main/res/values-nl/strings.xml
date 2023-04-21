@@ -1893,7 +1893,6 @@
     <string name="PrivacyPolicy">Privacybeleid</string>
     <string name="TermsOfService">Gebruiksvoorwaarden</string>
     <string name="TermsOfServiceLogin">Door aan te melden ga je akkoord \nmet onze *Gebruiksvoorwaarden*.</string>
-    <string name="PrivacyPolicyUrl">https://telegram.org/privacy</string>
     <string name="DeleteLocalizationTitle">Vertaalbestand verwijderen</string>
     <string name="DeleteLocalizationText">Taalbestand **%1$s** echt verwijderen?</string>
     <string name="IncorrectLocalization">Ongeldig vertalingsbestand</string>

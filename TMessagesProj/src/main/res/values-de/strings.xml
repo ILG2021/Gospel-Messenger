@@ -1893,7 +1893,6 @@
     <string name="PrivacyPolicy">Datenschutzerklärung</string>
     <string name="TermsOfService">Nutzungsbedingungen</string>
     <string name="TermsOfServiceLogin">Mit der Registrierung\nstimmst du den *Nutzungsbedingungen* zu.</string>
-    <string name="PrivacyPolicyUrl">https://telegram.org/privacy</string>
     <string name="DeleteLocalizationTitle">Sprachpaket löschen</string>
     <string name="DeleteLocalizationText">Möchtest du wirklich das Sprachpaket **%1$s** löschen?</string>
     <string name="IncorrectLocalization">Falsche Sprachdatei</string>

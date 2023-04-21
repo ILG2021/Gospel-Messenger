@@ -1893,7 +1893,6 @@
     <string name="PrivacyPolicy">سياسة الخصوصية</string>
     <string name="TermsOfService">شروط الخدمة</string>
     <string name="TermsOfServiceLogin">عبر تسجيلك\nأنت توافق على *شروط الخدمة*.</string>
-    <string name="PrivacyPolicyUrl">https://telegram.org/faq/ar#a10</string>
     <string name="DeleteLocalizationTitle">حذف حزمة اللغة</string>
     <string name="DeleteLocalizationText">هل ترغب حقًا في حذف حزمة اللغة **%1$s**؟</string>
     <string name="IncorrectLocalization">ملف التعريب غير صحيح</string>

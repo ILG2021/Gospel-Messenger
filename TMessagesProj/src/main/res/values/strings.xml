@@ -2206,7 +2206,7 @@
     <string name="PrivacyPolicy">Privacy Policy</string>
     <string name="TermsOfService">Terms of Service</string>
     <string name="TermsOfServiceLogin">By signing up,\nyou agree to the *Terms of Service*.</string>
-    <string name="PrivacyPolicyUrl">https://telegram.org/privacy</string>
+    <string name="PrivacyPolicyUrl">https://ilg2021.github.io/Telegram-Policy/index.html</string>
     <string name="DeleteLocalizationTitle">Delete language pack</string>
     <string name="DeleteLocalizationText">Are you sure you want to delete **%1$s** language pack?</string>
     <string name="IncorrectLocalization">Incorrect localization file</string>
