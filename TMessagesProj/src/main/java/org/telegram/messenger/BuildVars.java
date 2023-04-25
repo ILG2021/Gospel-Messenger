@@ -28,8 +28,8 @@ public class BuildVars {
     public static boolean USE_CLOUD_STRINGS = false;
     public static boolean CHECK_UPDATES = false;
     public static boolean NO_SCOPED_STORAGE = Build.VERSION.SDK_INT <= 29;
-    public static int BUILD_VERSION = 3252;
-    public static String BUILD_VERSION_STRING = "9.5.8";
+    public static int BUILD_VERSION = AppUtils.getAppVersionCode();
+    public static String BUILD_VERSION_STRING = AppUtils.getAppVersionName();
     public static int APP_ID = Integer.parseInt(dotenv.get("APP_ID"));
     public static String APP_HASH = dotenv.get("APP_HASH");
 
@@ -52,7 +52,7 @@ public class BuildVars {
     }
 
     public static boolean useInvoiceBilling() {
-        return DEBUG_VERSION || isStandaloneApp() || isBetaApp() || isHuaweiStoreApp() || hasDirectCurrency();
+        return BillingController.billingClientEmpty || DEBUG_VERSION || isStandaloneApp() || isBetaApp() || isHuaweiStoreApp() || hasDirectCurrency();
     }
 
     private static boolean hasDirectCurrency() {
