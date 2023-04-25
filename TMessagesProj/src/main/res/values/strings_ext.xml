@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 时间记录 -->
+    <string name="TimeRecord">Time Record</string>
+    <string name="TimeRecordExportToSheet">Export to Google Sheet</string>
+    <string name="TimeRecordClear">Clear Time Record</string>
+    <string name="TimeRecordClearDone">Time record is cleared.</string>
+    <string name="TimeRecordNoData">No time record</string>
+    <string name="TimeRecordTotalDuration">Total Duration:</string>
+    <string name="TimeRecordExport">Export</string>
+    <string name="TimeRecordWriteSheetPrompt">You should grant write permission of your sheet before export and please notice that all data in the sheet will be overwrote, please ensure it and continue.</string>
+    <string name="TimeRecordAvatar">Avatar</string>
+    <string name="TimeRecordDate">Date</string>
+    <string name="TimeRecordPhoneNo">Phone No.</string>
+    <string name="TimeRecordName">Name</string>
+    <string name="TimeRecordUserName">User Name</string>
+    <string name="TimeRecordDuration">Total Duration</string>
+    <string name="TimeRecordTimestamps">Timestamps</string>
+    <string name="TimeRecordLastExists">Time record exists, if you continue, it will be overwrote, are you sure to continue?</string>
+    <string name="TimeRecordWriteSheetHint">Please input Google Sheet Url</string>
+    <string name="VoipGroupCallAll">Call All</string>
+    <string name="VoipGroupCalling">Calling...</string>
+    <string name="PhoneNumNotMatchServer">The current backend does not support the phone number you entered, you need to restart the app to switch the backend.</string>
+</resources>

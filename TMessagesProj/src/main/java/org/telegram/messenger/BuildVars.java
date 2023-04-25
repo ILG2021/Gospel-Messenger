@@ -21,7 +21,7 @@ import io.github.cdimascio.dotenv.Dotenv;
 import io.github.cdimascio.dotenv.DotenvBuilder;
 
 public class BuildVars {
-    private static final Dotenv dotenv = new DotenvBuilder().directory("/assets").filename("env").ignoreIfMissing().load();
+    public static final Dotenv dotenv = new DotenvBuilder().directory("/assets").filename("env").ignoreIfMissing().load();
     public static boolean DEBUG_VERSION = BuildConfig.DEBUG_VERSION;
     public static boolean LOGS_ENABLED = BuildConfig.DEBUG_VERSION;
     public static boolean DEBUG_PRIVATE_VERSION = BuildConfig.DEBUG_PRIVATE_VERSION;
@@ -72,6 +72,7 @@ public class BuildVars {
     }
 
     private static Boolean standaloneApp;
+
     public static boolean isStandaloneApp() {
         if (standaloneApp == null) {
             standaloneApp = ApplicationLoader.applicationContext != null && "org.telegram.messenger.web".equals(ApplicationLoader.applicationContext.getPackageName());
@@ -80,6 +81,7 @@ public class BuildVars {
     }
 
     private static Boolean betaApp;
+
     public static boolean isBetaApp() {
         if (betaApp == null) {
             betaApp = ApplicationLoader.applicationContext != null && "org.telegram.messenger.beta".equals(ApplicationLoader.applicationContext.getPackageName());
@@ -91,4 +93,7 @@ public class BuildVars {
     public static boolean isHuaweiStoreApp() {
         return ApplicationLoader.isHuaweiStoreBuild();
     }
+
+    public static final int RING_COUNT_DOWN = BuildConfig.BUILD_TYPE.equals("release") ? 60 * 1000 : 15 * 1000;
+
 }

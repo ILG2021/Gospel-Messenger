@@ -55,6 +55,8 @@ import androidx.core.math.MathUtils;
 
 import com.google.android.gms.vision.Frame;
 
+import org.telegram.extension.GroupCallUtil;
+import org.telegram.extension.TimeRecordUtil;
 import org.telegram.messenger.AccountInstance;
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ChatObject;
@@ -211,8 +213,8 @@ public class FragmentContextView extends FrameLayout implements NotificationCent
     private boolean checkPlayerAfterAnimation;
     private boolean checkImportAfterAnimation;
 
-    private final static float[] speeds = new float[] {
-        .5f, 1f, 1.2f, 1.5f, 1.7f, 2f
+    private final static float[] speeds = new float[]{
+            .5f, 1f, 1.2f, 1.5f, 1.7f, 2f
     };
 
     @Override
@@ -452,10 +454,10 @@ public class FragmentContextView extends FrameLayout implements NotificationCent
             private void updateJoinButtonWidth(int width) {
                 if (joinButtonWidth != width) {
                     titleTextView.setPadding(
-                        titleTextView.getPaddingLeft(),
-                        titleTextView.getPaddingTop(),
-                        titleTextView.getPaddingRight() - joinButtonWidth + width,
-                        titleTextView.getPaddingBottom()
+                            titleTextView.getPaddingLeft(),
+                            titleTextView.getPaddingTop(),
+                            titleTextView.getPaddingRight() - joinButtonWidth + width,
+                            titleTextView.getPaddingBottom()
                     );
                     joinButtonWidth = width;
                 }
@@ -737,7 +739,9 @@ public class FragmentContextView extends FrameLayout implements NotificationCent
                 if (call == null) {
                     return;
                 }
-                VoIPHelper.startCall(fragment.getMessagesController().getChat(call.chatId), null, null, false, call.call != null && !call.call.rtmp_stream, fragment.getParentActivity(), fragment, fragment.getAccountInstance());
+                TimeRecordUtil.tempJoinCall(call, GroupCallUtil.getInstance().getMessagesController().getChat(call.chatId),
+                        v1 -> VoIPHelper.startCall(GroupCallUtil.getInstance().getMessagesController().getChat(call.chatId),
+                                null, null, false, fragment.getParentActivity(), fragment, fragment.getAccountInstance()));
             } else if (currentStyle == STYLE_IMPORTING_MESSAGES) {
                 SendMessagesHelper.ImportingHistory importingHistory = fragment.getSendMessagesHelper().getImportingHistory(((ChatActivity) fragment).getDialogId());
                 if (importingHistory == null) {
@@ -775,7 +779,7 @@ public class FragmentContextView extends FrameLayout implements NotificationCent
             }
         });
         playbackSpeedButton.setIcon(speedIcon = new SpeedIconDrawable(true));
-        final float[] toggleSpeeds = new float[] { 1.0F, 1.5F, 2F };
+        final float[] toggleSpeeds = new float[]{1.0F, 1.5F, 2F};
         speedSlider = new ActionBarMenuSlider.SpeedSlider(getContext(), resourcesProvider);
         speedSlider.setRoundRadiusDp(6);
         speedSlider.setDrawShadow(true);
@@ -863,7 +867,8 @@ public class FragmentContextView extends FrameLayout implements NotificationCent
                     if (visibility != View.VISIBLE) {
                         try {
                             ((ViewGroup) getParent()).removeView(this);
-                        } catch (Exception e) {}
+                        } catch (Exception e) {
+                        }
                     }
                 }
             };
@@ -2394,7 +2399,7 @@ public class FragmentContextView extends FrameLayout implements NotificationCent
             if (!service.isSwitchingStream() && (currentCallState == VoIPService.STATE_WAIT_INIT || currentCallState == VoIPService.STATE_WAIT_INIT_ACK || currentCallState == VoIPService.STATE_CREATING || currentCallState == VoIPService.STATE_RECONNECTING)) {
                 titleTextView.setText(LocaleController.getString("VoipGroupConnecting", R.string.VoipGroupConnecting), false);
             } else if (service.getChat() != null) {
-                if (!TextUtils.isEmpty(service.groupCall.call.title)) {
+                if (service.groupCall != null && !TextUtils.isEmpty(service.groupCall.call.title)) {
                     titleTextView.setText(service.groupCall.call.title, false);
                 } else {
                     if (chatActivity != null && chatActivity.getCurrentChat() != null && chatActivity.getCurrentChat().id == service.getChat().id) {

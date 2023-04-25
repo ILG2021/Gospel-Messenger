@@ -272,6 +272,115 @@ public class LocaleController {
         languagesDict.put(localeInfo.shortName, localeInfo);
 
         localeInfo = new LocaleInfo();
+        localeInfo.name = "简体中文";
+        localeInfo.nameEnglish = "Simplified Chinese";
+        localeInfo.pluralLangCode = "zh";
+        localeInfo.shortName = "zh_cn";
+        localeInfo.pathToFile = null;
+        localeInfo.builtIn = true;
+        languages.add(localeInfo);
+        languagesDict.put(localeInfo.shortName, localeInfo);
+
+        localeInfo = new LocaleInfo();
+        localeInfo.name = "Bahasa Indonesia";
+        localeInfo.nameEnglish = "Indonesia";
+        localeInfo.shortName = localeInfo.pluralLangCode = "id";
+        localeInfo.builtIn = true;
+        languages.add(localeInfo);
+        languagesDict.put(localeInfo.shortName, localeInfo);
+
+        localeInfo = new LocaleInfo();
+        localeInfo.name = "हिन्दी";
+        localeInfo.nameEnglish = "Hindi";
+        localeInfo.shortName = localeInfo.pluralLangCode = "hi";
+        localeInfo.builtIn = true;
+        languages.add(localeInfo);
+        languagesDict.put(localeInfo.shortName, localeInfo);
+
+        localeInfo = new LocaleInfo();
+        localeInfo.name = "தமிழ்";
+        localeInfo.nameEnglish = "Tamil";
+        localeInfo.shortName = localeInfo.pluralLangCode = "ta";
+        localeInfo.builtIn = true;
+        languages.add(localeInfo);
+        languagesDict.put(localeInfo.shortName, localeInfo);
+
+        localeInfo = new LocaleInfo();
+        localeInfo.name = "Tiếng Việt";
+        localeInfo.nameEnglish = "Vietnamese";
+        localeInfo.shortName = localeInfo.pluralLangCode = "vi";
+        localeInfo.builtIn = true;
+        languages.add(localeInfo);
+        languagesDict.put(localeInfo.shortName, localeInfo);
+
+        localeInfo = new LocaleInfo();
+        localeInfo.name = "မြန်မာဘာသာ";
+        localeInfo.nameEnglish = "Burmese";
+        localeInfo.shortName = localeInfo.pluralLangCode = "my";
+        localeInfo.builtIn = true;
+        languages.add(localeInfo);
+        languagesDict.put(localeInfo.shortName, localeInfo);
+
+        localeInfo = new LocaleInfo();
+        localeInfo.name = "Монгол";
+        localeInfo.nameEnglish = "Mongolian";
+        localeInfo.pluralLangCode = "mn";
+        localeInfo.shortName = "mn";
+        localeInfo.pathToFile = null;
+        localeInfo.builtIn = true;
+        languages.add(localeInfo);
+        languagesDict.put(localeInfo.shortName, localeInfo);
+
+        localeInfo = new LocaleInfo();
+        localeInfo.name = "ភាសាខ្មែរ";
+        localeInfo.nameEnglish = "Khmer";
+        localeInfo.pluralLangCode = "km";
+        localeInfo.shortName = "km";
+        localeInfo.pathToFile = null;
+        localeInfo.builtIn = true;
+        languages.add(localeInfo);
+        languagesDict.put(localeInfo.shortName, localeInfo);
+
+        localeInfo = new LocaleInfo();
+        localeInfo.name = "Filipino";
+        localeInfo.nameEnglish = "Filipino";
+        localeInfo.pluralLangCode = "tl";
+        localeInfo.shortName = "tl_ph";
+        localeInfo.pathToFile = null;
+        localeInfo.builtIn = true;
+        languages.add(localeInfo);
+        languagesDict.put(localeInfo.shortName, localeInfo);
+
+        localeInfo = new LocaleInfo();
+        localeInfo.name = "ไทย";
+        localeInfo.nameEnglish = "Thai";
+        localeInfo.pluralLangCode = "th";
+        localeInfo.shortName = "th";
+        localeInfo.pathToFile = null;
+        localeInfo.builtIn = true;
+        languages.add(localeInfo);
+        languagesDict.put(localeInfo.shortName, localeInfo);
+
+        localeInfo = new LocaleInfo();
+        localeInfo.name = "ລາວ";
+        localeInfo.nameEnglish = "Lao";
+        localeInfo.pluralLangCode = "lo";
+        localeInfo.shortName = "lo";
+        localeInfo.pathToFile = null;
+        localeInfo.builtIn = true;
+        languages.add(localeInfo);
+        languagesDict.put(localeInfo.shortName, localeInfo);
+
+        localeInfo = new LocaleInfo();
+        localeInfo.name = "Русский";
+        localeInfo.nameEnglish = "Russian";
+        localeInfo.shortName = localeInfo.pluralLangCode = "ru";
+        localeInfo.pathToFile = null;
+        localeInfo.builtIn = true;
+        languages.add(localeInfo);
+        languagesDict.put(localeInfo.shortName, localeInfo);
+
+        localeInfo = new LocaleInfo();
         localeInfo.name = "Italiano";
         localeInfo.nameEnglish = "Italian";
         localeInfo.shortName = localeInfo.pluralLangCode = "it";

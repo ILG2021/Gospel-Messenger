@@ -36,13 +36,13 @@ public class ManageChatUserCell extends FrameLayout {
 
     private BackupImageView avatarImageView;
     private SimpleTextView nameTextView;
-    private SimpleTextView statusTextView;
+    protected SimpleTextView statusTextView;
     private ImageView optionsButton;
-    private ImageView customImageView;
+    protected ImageView customImageView;
     private Theme.ResourcesProvider resourcesProvider;
 
     private AvatarDrawable avatarDrawable;
-    private Object currentObject;
+    protected Object currentObject;
 
     private CharSequence currentName;
     private CharSequence currrntStatus;
@@ -55,7 +55,7 @@ public class ManageChatUserCell extends FrameLayout {
     private boolean needDivider;
 
     private int statusColor;
-    private int statusOnlineColor;
+    protected int statusOnlineColor;
 
     private int namePadding;
 

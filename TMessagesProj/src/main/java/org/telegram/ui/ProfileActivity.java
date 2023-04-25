@@ -92,7 +92,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.blankj.utilcode.util.SPUtils;
+import com.blankj.utilcode.util.ToastUtils;
+
 import org.telegram.PhoneFormat.PhoneFormat;
+import org.telegram.extension.TimeRecordActivity;
+import org.telegram.extension.TimeRecordUtil;
 import org.telegram.messenger.AccountInstance;
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ApplicationLoader;
@@ -432,6 +437,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private final static int add_photo = 36;
     private final static int qr_button = 37;
     private final static int gift_premium = 38;
+    private final static int time_record = 39;
 
     private Rect rect = new Rect();
 
@@ -2034,7 +2040,9 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         if (call == null) {
                             VoIPHelper.showGroupCallAlert(ProfileActivity.this, currentChat, null, false, getAccountInstance());
                         } else {
-                            VoIPHelper.startCall(currentChat, null, null, false, getParentActivity(), ProfileActivity.this, getAccountInstance());
+                            TimeRecordUtil.tempJoinCall(call, getMessagesController().getChat(chatId), v -> {
+                                VoIPHelper.startCall(currentChat, null, null, false, getParentActivity(), ProfileActivity.this, getAccountInstance());
+                            });
                         }
                     }
                 } else if (id == search_members) {
@@ -2252,6 +2260,16 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         args.putLong("user_id", userId);
                         presentFragment(new QrActivity(args));
                     }
+                }else if (id == time_record) {
+                    SPUtils sp = SPUtils.getInstance("TimeRecord_" + currentChat.id + "_" + UserConfig.selectedAccount);
+                    if (sp.getAll().size() == 0) {
+                        ToastUtils.showShort(LocaleController.getString("TimeRecordNoData"), R.string.TimeRecordNoData);
+                        return;
+                    }
+
+                    Bundle bundle = new Bundle();
+                    bundle.putLong("chatId", currentChat.id);
+                    presentFragment(new TimeRecordActivity(bundle));
                 }
             }
         });
@@ -7997,6 +8015,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             }
         } else if (chatId != 0) {
             TLRPC.Chat chat = getMessagesController().getChat(chatId);
+            if (ChatObject.canManageCalls(chat))
+                otherItem.addSubItem(time_record, R.drawable.msg_timer, LocaleController.getString("TimeRecord", R.string.TimeRecord));
             hasVoiceChatItem = false;
             if (topicId == 0 && ChatObject.canUserDoAdminAction(chat, ChatObject.ACTION_DELETE_MESSAGES)) {
                 createAutoDeleteItem(context);

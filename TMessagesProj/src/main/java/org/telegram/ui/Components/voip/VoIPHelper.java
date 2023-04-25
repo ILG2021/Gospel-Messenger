@@ -22,6 +22,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.telegram.extension.GroupCallUtil;
+import org.telegram.extension.TimeRecordUtil;
 import org.telegram.messenger.AccountInstance;
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ApplicationLoader;
@@ -315,6 +317,14 @@ public class VoIPHelper {
 			if (call != null && call.isScheduled()) {
 				GroupCallActivity.create((LaunchActivity) activity, accountInstance, chat, peer, hasFewPeers, hash);
 				return;
+			}
+		}
+
+		if (chat != null && createCall && ChatObject.canManageCalls(chat)) {
+			TLRPC.ChatFull chatFull = accountInstance.getMessagesController().getChatFull(chat.id);
+			if (chatFull != null) {
+				GroupCallUtil.startGroupCall(chatFull);
+				TimeRecordUtil.startGroupCall(chat.id);
 			}
 		}
 

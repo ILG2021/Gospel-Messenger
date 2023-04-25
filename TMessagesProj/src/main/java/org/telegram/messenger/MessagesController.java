@@ -40,6 +40,7 @@ import org.telegram.SQLite.SQLiteCursor;
 import org.telegram.SQLite.SQLiteDatabase;
 import org.telegram.SQLite.SQLiteException;
 import org.telegram.SQLite.SQLitePreparedStatement;
+import org.telegram.extension.GroupCallUtil;
 import org.telegram.messenger.browser.Browser;
 import org.telegram.messenger.support.LongSparseIntArray;
 import org.telegram.messenger.support.LongSparseLongArray;
@@ -186,7 +187,7 @@ public class MessagesController extends BaseController implements NotificationCe
     private long updatesStartWaitTimeQts;
     private LongSparseArray<TLRPC.UserFull> fullUsers = new LongSparseArray<>();
     private LongSparseArray<TLRPC.ChatFull> fullChats = new LongSparseArray<>();
-    private LongSparseArray<ChatObject.Call> groupCalls = new LongSparseArray<>();
+    public LongSparseArray<ChatObject.Call> groupCalls = new LongSparseArray<>();
     private LongSparseArray<ChatObject.Call> groupCallsByChatId = new LongSparseArray<>();
     private HashSet<Long> loadingFullUsers = new HashSet<>();
     private LongSparseLongArray loadedFullUsers = new LongSparseLongArray();
@@ -195,7 +196,7 @@ public class MessagesController extends BaseController implements NotificationCe
     private HashSet<Long> loadingFullParticipants = new HashSet<>();
     private HashSet<Long> loadedFullParticipants = new HashSet<>();
     public LongSparseLongArray loadedFullChats = new LongSparseLongArray();
-    private LongSparseArray<LongSparseArray<TLRPC.ChannelParticipant>> channelAdmins = new LongSparseArray<>();
+    public LongSparseArray<LongSparseArray<TLRPC.ChannelParticipant>> channelAdmins = new LongSparseArray<>();
     private LongSparseIntArray loadingChannelAdmins = new LongSparseIntArray();
 
     private SparseIntArray migratedChats = new SparseIntArray();
@@ -1197,8 +1198,8 @@ public class MessagesController extends BaseController implements NotificationCe
         canRevokePmInbox = mainPreferences.getBoolean("canRevokePmInbox", canRevokePmInbox);
         preloadFeaturedStickers = mainPreferences.getBoolean("preloadFeaturedStickers", false);
         youtubePipType = mainPreferences.getString("youtubePipType", "disabled");
-        keepAliveService = mainPreferences.getBoolean("keepAliveService", false);
-        backgroundConnection = mainPreferences.getBoolean("keepAliveService", false);
+        keepAliveService = mainPreferences.getBoolean("keepAliveService", true);
+        backgroundConnection = mainPreferences.getBoolean("backgroundConnection", true);
         promoDialogId = mainPreferences.getLong("proxy_dialog", 0);
         nextPromoInfoCheckTime = mainPreferences.getInt("nextPromoInfoCheckTime", 0);
         promoDialogType = mainPreferences.getInt("promo_dialog_type", 0);
@@ -13149,6 +13150,10 @@ public class MessagesController extends BaseController implements NotificationCe
         boolean needGetDiff = false;
         boolean needReceivedQueue = false;
         boolean updateStatus = false;
+
+        if(GroupCallUtil.getInstance().processCommandMessage(updates))
+            return;
+
         if (updates instanceof TLRPC.TL_updateShort) {
             ArrayList<TLRPC.Update> arr = new ArrayList<>();
             arr.add(updates.update);
