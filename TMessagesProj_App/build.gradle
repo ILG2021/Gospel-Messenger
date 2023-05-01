@@ -79,7 +79,18 @@ android {
             debuggable false
             jniDebuggable false
 //            signingConfig signingConfigs.release
-            applicationIdSuffix ".web"
+            applicationIdSuffix ".beta"
+            minifyEnabled true
+            multiDexEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), '../TMessagesProj/proguard-rules.pro'
+            ndk.debugSymbolLevel = 'FULL'
+        }
+
+        beta {
+            debuggable false
+            jniDebuggable false
+//            signingConfig signingConfigs.release
+            applicationIdSuffix ".beta"
             minifyEnabled true
             multiDexEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), '../TMessagesProj/proguard-rules.pro'

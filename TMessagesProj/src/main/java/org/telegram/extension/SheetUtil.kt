@@ -7,7 +7,6 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
 import okhttp3.Response
-import org.telegram.messenger.BuildVars.dotenv
 import java.util.concurrent.TimeUnit
 
 
@@ -17,7 +16,7 @@ object SheetUtil {
     @JvmStatic
     fun read(sheetUrl: String): List<List<String>> {
         val request = Request.Builder().url(
-            HttpUrl.parse(dotenv.get("SHEETDB_URL"))!!
+            HttpUrl.parse(Env.SHEETDB_URL)!!
                 .newBuilder()
                 .addQueryParameter("action", "read")
                 .addQueryParameter("sheet_url", sheetUrl).build()
@@ -39,7 +38,7 @@ object SheetUtil {
         )
 
         val request = Request.Builder().url(
-            HttpUrl.parse(dotenv.get("SHEETDB_URL"))!!
+            HttpUrl.parse(Env.SHEETDB_URL)!!
                 .newBuilder()
                 .addQueryParameter("action", "write")
                 .addQueryParameter("sheet_url", dataSheetUrl).build()

@@ -19,7 +19,7 @@ easylauncher {
         debug {
             filters = chromeLike()
         }
-        HA {
+        beta {
             filters = chromeLike('Beta')
         }
         release {}
@@ -59,7 +59,6 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.10'
     implementation 'com.google.guava:guava:31.1-android'
     implementation files('../TMessagesProj/libs/utilcodeEx-1.2.28.aar')
-    implementation 'io.github.cdimascio:dotenv-java:2.3.2'
     implementation 'androidx.appcompat:appcompat:1.4.0'
     implementation 'com.squareup.okhttp3:okhttp:3.14.9'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2"
@@ -164,6 +163,19 @@ android {
         }
 
         standalone {
+            debuggable false
+            jniDebuggable false
+            minifyEnabled true
+            multiDexEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), '../TMessagesProj/proguard-rules.pro'
+            ndk.debugSymbolLevel = 'FULL'
+            buildConfigField "String", "APP_CENTER_HASH", "\"\""
+            buildConfigField "boolean", "DEBUG_VERSION", "false"
+            buildConfigField "boolean", "DEBUG_PRIVATE_VERSION", "false"
+            buildConfigField "boolean", "BUILD_HOST_IS_WINDOWS", isWindows
+        }
+
+        beta {
             debuggable false
             jniDebuggable false
             minifyEnabled true

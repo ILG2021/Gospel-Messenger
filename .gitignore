@@ -4,4 +4,4 @@ build/
 obj/
 *.iml
 local.properties
-/TMessagesProj/src/main/assets/env
+/TMessagesProj/src/main/java/org/telegram/extension/Env.java

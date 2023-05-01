@@ -15,13 +15,11 @@ import android.os.Build;
 import com.android.billingclient.api.ProductDetails;
 import com.blankj.utilcode.util.AppUtils;
 
+import org.telegram.extension.Env;
+
 import java.util.Objects;
 
-import io.github.cdimascio.dotenv.Dotenv;
-import io.github.cdimascio.dotenv.DotenvBuilder;
-
 public class BuildVars {
-    public static final Dotenv dotenv = new DotenvBuilder().directory("/assets").filename("env").ignoreIfMissing().load();
     public static boolean DEBUG_VERSION = BuildConfig.DEBUG_VERSION;
     public static boolean LOGS_ENABLED = BuildConfig.DEBUG_VERSION;
     public static boolean DEBUG_PRIVATE_VERSION = BuildConfig.DEBUG_PRIVATE_VERSION;
@@ -30,11 +28,12 @@ public class BuildVars {
     public static boolean NO_SCOPED_STORAGE = Build.VERSION.SDK_INT <= 29;
     public static int BUILD_VERSION = AppUtils.getAppVersionCode();
     public static String BUILD_VERSION_STRING = AppUtils.getAppVersionName();
-    public static int APP_ID = Integer.parseInt(dotenv.get("APP_ID"));
-    public static String APP_HASH = dotenv.get("APP_HASH");
+    public static int APP_ID = Env.APP_ID;
+
+    public static String APP_HASH = Env.APP_HASH;
 
     // SafetyNet key for Google Identity SDK, set it to empty to disable
-    public static String SAFETYNET_KEY = "AIzaSyDqt8P-7F7CPCseMkOiVRgb1LY8RN1bvH8";
+    public static String SAFETYNET_KEY = "";
     public static String SMS_HASH = isStandaloneApp() ? "w0lkcmTZkKh" : (DEBUG_VERSION ? "O2P2z+/jBpJ" : "oLeq9AcOZkT");
     public static String PLAYSTORE_APP_URL = "https://play.google.com/store/apps/details?id=" + AppUtils.getAppPackageName();
     public static String GOOGLE_AUTH_CLIENT_ID = "760348033671-81kmi3pi84p11ub8hp9a1funsv0rn2p9.apps.googleusercontent.com";

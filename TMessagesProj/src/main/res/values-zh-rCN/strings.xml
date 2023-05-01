@@ -4976,7 +4976,7 @@
     <string name="VoipGroupCallMember">呼叫群组人员</string>
     <string name="VoipGroupSearchMembersCall">搜索人员以呼叫...</string>
     <string name="TimeRecordWriteSheetHint">请输入Google Sheet地址</string>
-    <string name="PhoneNumNotMatchServer">当前后台不支持你输入的电话号码，你需要重启应用程序以切换后台。</string>
+    <string name="PhoneNumNotMatchServer">当前后台不支持你输入的电话号码，你需要重启应用程序以切换后台然后重新输入号码。</string>
     <string name="TimeRecordDate">日期</string>
 
 </resources>
