@@ -17,6 +17,7 @@ import org.telegram.ui.Cells.ManageChatUserCell;
 import org.telegram.ui.Components.LayoutHelper;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 public class MyManageChatUserCell extends ManageChatUserCell {
@@ -97,9 +98,11 @@ public class MyManageChatUserCell extends ManageChatUserCell {
             @Override
             public void onFinish() {
                 Set<String> callingUsers = GroupCallUtil.callingSp().getStringSet(chatId + "", new HashSet<>());
-                for (String value : callingUsers) {
+                Iterator<String> iterator = callingUsers.iterator();
+                while (iterator.hasNext()) {
+                    String value = iterator.next();
                     if (value.contains(getUserId() + "_")) {
-                        callingUsers.remove(value);
+                        iterator.remove();
                         GroupCallUtil.callingSp().put(chatId + "", callingUsers);
                         update(0);
                     }
