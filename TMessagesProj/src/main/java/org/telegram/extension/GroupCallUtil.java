@@ -48,6 +48,8 @@ public class GroupCallUtil {
     private static volatile GroupCallUtil Instance = new GroupCallUtil();
     private final List<Long> groupsExcludeMe = new ArrayList<>();
 
+    public static final int RING_COUNT_DOWN = BuildConfig.BUILD_TYPE.equals("release") ? 60 * 1000 : 15 * 1000;
+
     public static GroupCallUtil getInstance() {
         GroupCallUtil localInstance = Instance;
         if (localInstance == null) {
@@ -67,6 +69,15 @@ public class GroupCallUtil {
 
     public static SPUtils callingSp() {
         return SPUtils.getInstance("callingUsers" + UserConfig.selectedAccount);
+    }
+
+    /**
+     * 限制频繁呼叫
+     *
+     * @return
+     */
+    public static SPUtils callLimitSp() {
+        return SPUtils.getInstance("callLimit" + UserConfig.selectedAccount);
     }
 
     private static boolean isAdmin(TLRPC.ChatParticipant participant) {
@@ -537,8 +548,22 @@ public class GroupCallUtil {
         }
 
         long lastHangup = MessagesController.getGlobalMainSettings().getLong("lastHangup", -1);
-        if (lastHangup > 0 && System.currentTimeMillis() - lastHangup < BuildVars.RING_COUNT_DOWN)
+        if (lastHangup > 0 && System.currentTimeMillis() - lastHangup < RING_COUNT_DOWN)
             return;
+
+        // 一个组6小时内最多呼叫3次
+        long lastRingTime = callLimitSp().getLong("lastRingTime_" + chatId, -1);
+        int ringCount = callLimitSp().getInt("ringCount_" + chatId, -1);
+        if (lastRingTime > 0 && System.currentTimeMillis() - lastRingTime >= 6 * 3600 * 1000) {
+            ringCount = -1;
+        }
+
+        if (ringCount >= 3) {
+            LogUtils.d("呼叫超过3次");
+            return;
+        }
+        callLimitSp().put("lastRingTime_" + chatId, System.currentTimeMillis());
+        callLimitSp().put("ringCount_" + chatId, ringCount + 1);
 
         TelephonyManager tm = (TelephonyManager) ApplicationLoader.applicationContext.getSystemService(Context.TELEPHONY_SERVICE);
         boolean callStateIsIdle = true;

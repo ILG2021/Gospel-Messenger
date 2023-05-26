@@ -88,7 +88,6 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.blankj.utilcode.util.ActivityUtils;
-import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.NotificationUtils;
 import com.blankj.utilcode.util.ThreadUtils;
 
@@ -743,7 +742,6 @@ public class VoIPService extends Service implements SensorEventListener, AudioMa
 		} catch (Exception e) {
 			FileLog.e(e);
 		}
-
 		groupCallRinging = intent.getBooleanExtra("group_call_ringing", false);
 
 		if (groupCallRinging && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -1076,7 +1074,7 @@ public class VoIPService extends Service implements SensorEventListener, AudioMa
 						timeoutCountDown = null;
 					}
 
-					timeoutCountDown = new CountDownTimer( BuildVars.RING_COUNT_DOWN, 1000L) {
+					timeoutCountDown = new CountDownTimer( GroupCallUtil.RING_COUNT_DOWN, 1000L) {
 						@Override
 						public void onTick(long l) {
 							if (!((KeyguardManager) getSystemService(KEYGUARD_SERVICE)).isKeyguardLocked()) {
@@ -1117,7 +1115,7 @@ public class VoIPService extends Service implements SensorEventListener, AudioMa
 						timeoutRunnable = null;
 						endGroupCallRinging();
 					};
-					AndroidUtilities.runOnUIThread(timeoutRunnable, BuildVars.RING_COUNT_DOWN);
+					AndroidUtilities.runOnUIThread(timeoutRunnable, GroupCallUtil.RING_COUNT_DOWN);
 				}
 			}
 		} else {
@@ -3016,7 +3014,7 @@ public class VoIPService extends Service implements SensorEventListener, AudioMa
 		}
 	}
 
-	private void  startRingtoneAndVibration(long chatID) {
+	private void startRingtoneAndVibration(long chatID) {
 		SharedPreferences prefs = MessagesController.getNotificationsSettings(currentAccount);
 		AudioManager am = (AudioManager) getSystemService(AUDIO_SERVICE);
 		boolean needRing = am.getRingerMode() != AudioManager.RINGER_MODE_SILENT;
@@ -3450,40 +3448,47 @@ public class VoIPService extends Service implements SensorEventListener, AudioMa
 		if (USE_CONNECTION_SERVICE && systemCallConnection != null) {
 			systemCallConnection.setRinging();
 		}
-		if (BuildVars.LOGS_ENABLED) {
+		if (BuildVars.LOGS_ENABLED && privateCall != null) {
 			FileLog.d("starting ringing for call " + privateCall.id);
 		}
 		dispatchStateChanged(STATE_WAITING_INCOMING);
 		if (!notificationsDisabled && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-			showIncomingNotification(ContactsController.formatName(user.first_name, user.last_name), user, privateCall.video, 0);
+			boolean video = privateCall != null && privateCall.video;
+			String name = "";
+			if (user != null) {
+				name = ContactsController.formatName(user.first_name, user.last_name);
+				showIncomingNotification(name, user, video, 0);
+			} else if (chat != null) {
+				showIncomingNotification(chat.title, chat, video, 0);
+			}
 			if (BuildVars.LOGS_ENABLED) {
 				FileLog.d("Showing incoming call notification");
 			}
 		} else {
-			startRingtoneAndVibration(user.id);
+			startRingtoneAndVibration();
 			if (BuildVars.LOGS_ENABLED) {
 				FileLog.d("Starting incall activity for incoming call");
 			}
-			/*try {
-				PendingIntent.getActivity(VoIPService.this, 12345, new Intent(VoIPService.this, LaunchActivity.class).setAction("voip"), PendingIntent.FLAG_MUTABLE).send();
-			} catch (Exception x) {
-				if (BuildVars.LOGS_ENABLED) {
-					FileLog.e("Error starting incall activity", x);
-				}
-			}*/
+                /*try {
+                        PendingIntent.getActivity(VoIPService.this, 12345, new Intent(VoIPService.this, LaunchActivity.class).setAction("voip"), PendingIntent.FLAG_MUTABLE).send();
+                } catch (Exception x) {
+                        if (BuildVars.LOGS_ENABLED) {
+                                FileLog.e("Error starting incall activity", x);
+                        }
+                }*/
 
 			startInCallActivity();
 		}
 	}
 
 	public void startRingtoneAndVibration() {
-		if (!startedRinging) {
-			if (user != null)
-				startRingtoneAndVibration(user.id);
-			else startRingtoneAndVibration(0);
-			startedRinging = true;
-		}
-	}
+        if (!startedRinging) {
+            if (user != null)
+                startRingtoneAndVibration(user.id);
+            else startRingtoneAndVibration(0);
+            startedRinging = true;
+        }
+    }
 
 	private void updateServerConfig() {
 		final SharedPreferences preferences = MessagesController.getMainSettings(currentAccount);
@@ -4093,11 +4098,11 @@ public class VoIPService extends Service implements SensorEventListener, AudioMa
 
 	private void showIncomingNotification(String name, TLObject userOrChat, boolean video, int additionalMemberCount) {
 		Intent intent = new Intent(this, LaunchActivity.class);
-		if (groupCallRinging) {
-			intent.setAction("group_call_ringing");
-			intent.putExtra("chat_id", chat.id);
-		} else
-			intent.setAction("voip");
+        if (groupCallRinging) {
+            intent.setAction("group_call_ringing");
+            intent.putExtra("chat_id", chat.id);
+        } else
+            intent.setAction("voip");
 		Notification.Builder builder = new Notification.Builder(this)
 				.setContentTitle(video ? LocaleController.getString("VoipInVideoCallBranding", R.string.VoipInVideoCallBranding) : LocaleController.getString("VoipInCallBranding", R.string.VoipInCallBranding))
 				.setSmallIcon(R.drawable.notification)
@@ -4455,43 +4460,43 @@ public class VoIPService extends Service implements SensorEventListener, AudioMa
 			stopForeground(true);
 			hangUp();
 		} else if ((getPackageName() + ".DECLINE_CALL").equals(intent.getAction())) {
-			if (groupCallRinging) {
-				endGroupCallRinging();
-			} else {
-				stopForeground(true);
-				declineIncomingCall(DISCARD_REASON_LINE_BUSY, null);
-			}
+            if (groupCallRinging) {
+                endGroupCallRinging();
+            } else {
+                stopForeground(true);
+                declineIncomingCall(DISCARD_REASON_LINE_BUSY, null);
+            }
 		} else if ((getPackageName() + ".ANSWER_CALL").equals(intent.getAction())) {
 			acceptIncomingCallFromNotification();
 		}
 	}
 
 	private void acceptIncomingCallFromNotification() {
-		if (groupCallRinging) {
-			startInCallActivity();
-			endGroupCallRinging();
-		} else {
-			showNotification();
-			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && Build.VERSION.SDK_INT < Build.VERSION_CODES.R && (checkSelfPermission(Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED || privateCall.video && checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)) {
-				try {
-					//intent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
-					PendingIntent.getActivity(VoIPService.this, 0, new Intent(VoIPService.this, VoIPPermissionActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK), PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_ONE_SHOT).send();
-				} catch (Exception x) {
-					if (BuildVars.LOGS_ENABLED) {
-						FileLog.e("Error starting permission activity", x);
-					}
-				}
-				return;
-			}
-			acceptIncomingCall();
-			try {
-				PendingIntent.getActivity(VoIPService.this, 0, new Intent(VoIPService.this, getUIActivityClass()).setAction("voip"), PendingIntent.FLAG_MUTABLE).send();
-			} catch (Exception x) {
-				if (BuildVars.LOGS_ENABLED) {
-					FileLog.e("Error starting incall activity", x);
-				}
-			}
-		}
+        if (groupCallRinging) {
+            startInCallActivity();
+            endGroupCallRinging();
+        } else {
+            showNotification();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && Build.VERSION.SDK_INT < Build.VERSION_CODES.R && (checkSelfPermission(Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED || privateCall.video && checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)) {
+                try {
+                    //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
+                    PendingIntent.getActivity(VoIPService.this, 0, new Intent(VoIPService.this, VoIPPermissionActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK), PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_ONE_SHOT).send();
+                } catch (Exception x) {
+                    if (BuildVars.LOGS_ENABLED) {
+                        FileLog.e("Error starting permission activity", x);
+                    }
+                }
+                return;
+            }
+            acceptIncomingCall();
+            try {
+                PendingIntent.getActivity(VoIPService.this, 0, new Intent(VoIPService.this, getUIActivityClass()).setAction("voip"), PendingIntent.FLAG_MUTABLE).send();
+            } catch (Exception x) {
+                if (BuildVars.LOGS_ENABLED) {
+                    FileLog.e("Error starting incall activity", x);
+                }
+            }
+        }
 	}
 
 	public void updateOutputGainControlState() {
@@ -4684,40 +4689,40 @@ public class VoIPService extends Service implements SensorEventListener, AudioMa
 		public boolean wasVideoCall;
 	}
 
-	// 下面是群组呼叫响铃的部分
+    // 下面是群组呼叫响铃的部分
     public boolean isGroupCallRinging() {
         return isRinging() && groupCallRinging;
     }
 
     private boolean groupCallRinging = false;
-	private CountDownTimer timeoutCountDown;
+    private CountDownTimer timeoutCountDown;
 
-	public void endGroupCallRinging() {
+    public void endGroupCallRinging() {
         stopSelf();
         MessagesController.getGlobalMainSettings().edit().putLong("lastHangup", System.currentTimeMillis()).apply();
     }
 
-	private void startInCallActivity() {
-		try {
-			if (groupCallRinging) {
-				Bundle args = new Bundle();
-				args.putLong("chat_id", chat.id);
-				args.putBoolean("group_call_ringing", true);
+    private void startInCallActivity() {
+        try {
+            if (groupCallRinging) {
+                Bundle args = new Bundle();
+                args.putLong("chat_id", chat.id);
+                args.putBoolean("group_call_ringing", true);
 
-				if (ActivityUtils.getTopActivity() instanceof LaunchActivity) {
-					ChatActivity chatActivity = new ChatActivity(args);
-					LaunchActivity activity = (LaunchActivity) ActivityUtils.getTopActivity();
-					activity.getActionBarLayout().presentFragment(chatActivity);
-				} else {
-					PendingIntent.getActivity(VoIPService.this, 12345, new Intent(VoIPService.this, LaunchActivity.class).putExtra("chat_id", chat.id).setAction("group_call_ringing"),PendingIntent.FLAG_MUTABLE).send();
-				}
-			} else
-				PendingIntent.getActivity(VoIPService.this, 12345, new Intent(VoIPService.this, LaunchActivity.class).setAction("voip"), PendingIntent.FLAG_MUTABLE).send();
-		} catch (Exception x) {
-			if (BuildVars.LOGS_ENABLED) {
-				FileLog.e("Error starting incall activity", x);
-			}
-			stopRinging();
-		}
-	}
+                if (ActivityUtils.getTopActivity() instanceof LaunchActivity) {
+                    ChatActivity chatActivity = new ChatActivity(args);
+                    LaunchActivity activity = (LaunchActivity) ActivityUtils.getTopActivity();
+                    activity.getActionBarLayout().presentFragment(chatActivity);
+                } else {
+                    PendingIntent.getActivity(VoIPService.this, 12345, new Intent(VoIPService.this, LaunchActivity.class).putExtra("chat_id", chat.id).setAction("group_call_ringing"),PendingIntent.FLAG_MUTABLE).send();
+                }
+            } else
+                PendingIntent.getActivity(VoIPService.this, 12345, new Intent(VoIPService.this, LaunchActivity.class).setAction("voip"), PendingIntent.FLAG_MUTABLE).send();
+        } catch (Exception x) {
+            if (BuildVars.LOGS_ENABLED) {
+                FileLog.e("Error starting incall activity", x);
+            }
+            stopRinging();
+        }
+    }
 }

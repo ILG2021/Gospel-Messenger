@@ -91,7 +91,4 @@ public class BuildVars {
     public static boolean isHuaweiStoreApp() {
         return ApplicationLoader.isHuaweiStoreBuild();
     }
-
-    public static final int RING_COUNT_DOWN = BuildConfig.BUILD_TYPE.equals("release") ? 60 * 1000 : 15 * 1000;
-
 }

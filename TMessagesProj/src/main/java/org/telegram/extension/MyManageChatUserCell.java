@@ -130,7 +130,7 @@ public class MyManageChatUserCell extends ManageChatUserCell {
         if (isCalling()) {
             statusTextView.setTextColor(statusOnlineColor);
             long startTime = getCallStartTime();
-            startCountDown(BuildVars.RING_COUNT_DOWN - (System.currentTimeMillis() - startTime));
+            startCountDown(GroupCallUtil.RING_COUNT_DOWN - (System.currentTimeMillis() - startTime));
         } else
             cancelCountDown();
     }

@@ -89,8 +89,6 @@ import androidx.core.graphics.ColorUtils;
 
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.KeyboardUtils;
-import com.blankj.utilcode.util.SPUtils;
-import com.blankj.utilcode.util.ThreadUtils;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -2597,8 +2595,8 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                     int ss = phoneField.getSelectionStart(), se = phoneField.getSelectionEnd();
                     phoneField.setHintText(hint != null ? hint.replace('X', '0') : null);
                     phoneField.setSelection(
-                        Math.max(0, Math.min(phoneField.length(), ss)),
-                        Math.max(0, Math.min(phoneField.length(), se))
+                            Math.max(0, Math.min(phoneField.length(), ss)),
+                            Math.max(0, Math.min(phoneField.length(), se))
                     );
                     wasCountryHintIndex = index;
                 }
@@ -2853,11 +2851,13 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                 builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
                 showDialog(builder.create());
                 return;
-            } else if (countryState == COUNTRY_STATE_EMPTY) {
+            }
+
+            if (countryState == COUNTRY_STATE_EMPTY) {
                 needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("ChooseCountry", R.string.ChooseCountry));
                 needHideProgress(false);
                 return;
-            } else if (countryState == COUNTRY_STATE_INVALID && !BuildVars.DEBUG_VERSION && !testNumPattern.matcher(phone).matches()) {
+            } else if (countryState == COUNTRY_STATE_INVALID && !BuildVars.DEBUG_VERSION) {
                 needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("WrongCountry", R.string.WrongCountry));
                 needHideProgress(false);
                 return;
@@ -5803,9 +5803,9 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                 }, NotificationCenter.onActivityResultReceived);
 
                 GoogleSignInClient googleClient = GoogleSignIn.getClient(getContext(), new GoogleSignInOptions.Builder()
-                                .requestIdToken(BuildVars.GOOGLE_AUTH_CLIENT_ID)
-                                .requestEmail()
-                                .build());
+                        .requestIdToken(BuildVars.GOOGLE_AUTH_CLIENT_ID)
+                        .requestEmail()
+                        .build());
                 googleClient.signOut().addOnCompleteListener(command -> getParentActivity().startActivityForResult(googleClient.getSignInIntent(), BasePermissionsActivity.REQUEST_CODE_SIGN_IN_WITH_GOOGLE));
             });
 
