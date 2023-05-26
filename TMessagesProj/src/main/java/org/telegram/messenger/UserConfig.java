@@ -296,6 +296,9 @@ public class UserConfig extends BaseController {
             if (currentAccount == 0) {
                 selectedAccount = preferences.getInt("selectedAccount", 0);
             }
+            if(selectedAccount > MAX_ACCOUNT_DEFAULT_COUNT)
+                selectedAccount = MAX_ACCOUNT_DEFAULT_COUNT;
+
             registeredForPush = preferences.getBoolean("registeredForPush", false);
             lastSendMessageId = preferences.getInt("lastSendMessageId", -210000);
             contactsSavedCount = preferences.getInt("contactsSavedCount", 0);

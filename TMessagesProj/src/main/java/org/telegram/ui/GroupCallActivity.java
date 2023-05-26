@@ -6855,7 +6855,7 @@ public class GroupCallActivity extends BottomSheet implements NotificationCenter
     }
 
     private static void processOnLeave(ChatObject.Call call, boolean discard, long selfId, Runnable onLeave) {
-        if (call != null && !discard && VoIPService.getSharedInstance().getChat() != null
+        if (call != null && !discard && VoIPService.getSharedInstance() != null && VoIPService.getSharedInstance().getChat() != null
                 && ChatObject.canManageCalls(VoIPService.getSharedInstance().getChat())) {
             SPUtils sp = TimeRecordUtil.timeRecordSp(call.chatId);
             TimeRecord record = new TimeRecord();

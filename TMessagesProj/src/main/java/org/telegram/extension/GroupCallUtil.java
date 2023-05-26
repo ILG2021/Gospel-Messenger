@@ -135,18 +135,19 @@ public class GroupCallUtil {
 
     public static void callAll(TLRPC.Chat chat, ArrayList<TLObject> participants) {
         Set<String> callingUsers = callingSp().getStringSet(chat.id + "", new HashSet<>());
-        Set<String> origCallingUsers = callingSp().getStringSet(chat.id + "", new HashSet<>());
         Set<String> excludeUsers = excludeSp().getStringSet(chat.id + "", new HashSet<>());
+        ArrayList<String> temp = new ArrayList<>();
         participants.stream().forEach(participant -> {
             long userId = -1;
             if (participant instanceof TLRPC.ChatParticipant)
                 userId = ((TLRPC.ChatParticipant) participant).user_id;
             else if (participant instanceof TLRPC.ChannelParticipant)
                 userId = ((TLRPC.ChannelParticipant) participant).peer.user_id;
-            if (userId != -1 && !callingUsersContains(origCallingUsers, userId) && !excludeUsers.contains(userId + ""))
-                callingUsers.add(userId + "_" + System.currentTimeMillis());
+            if (userId != -1 && !callingUsersContains(callingUsers, userId) && !excludeUsers.contains(userId + ""))
+                temp.add(userId + "_" + System.currentTimeMillis());
         });
 
+        callingUsers.addAll(temp);
         callingSp().put(chat.id + "", callingUsers);
         GroupCallUtil.sendCommandMessage(GroupCallUtil.INVITE_ALL, chat.id, null);
     }
