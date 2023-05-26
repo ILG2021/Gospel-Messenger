@@ -22,8 +22,6 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.exoplayer2.util.Log;
-
 import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.SQLite.SQLiteCursor;
 import org.telegram.SQLite.SQLitePreparedStatement;
@@ -577,6 +575,7 @@ public class DialogsSearchAdapter extends RecyclerListView.SelectionAdapter {
             dialogsType != DialogsActivity.DIALOGS_TYPE_USERS_ONLY &&
             dialogsType != DialogsActivity.DIALOGS_TYPE_CHANNELS_ONLY &&
             dialogsType != DialogsActivity.DIALOGS_TYPE_GROUPS_ONLY &&
+            dialogsType != DialogsActivity.DIALOGS_TYPE_BOT_SHARE &&
             dialogsType != DialogsActivity.DIALOGS_TYPE_IMPORT_HISTORY_GROUPS &&
             dialogsType != DialogsActivity.DIALOGS_TYPE_BOT_REQUEST_PEER
         );
@@ -1285,10 +1284,12 @@ public class DialogsSearchAdapter extends RecyclerListView.SelectionAdapter {
             globalCount = 4;
         }
         int contactsCount = searchContacts.size();
-        if (i >= 0 && i < contactsCount) {
-            return false;
+        if (contactsCount > 0) {
+            if (i >= 0 && i < contactsCount) {
+                return false;
+            }
+            i -= contactsCount + 1;
         }
-        i -= contactsCount + 1;
         if (i >= 0 && i < localCount) {
             return false;
         }
@@ -1745,7 +1746,7 @@ public class DialogsSearchAdapter extends RecyclerListView.SelectionAdapter {
             case VIEW_TYPE_ADD_BY_PHONE: {
                 String str = (String) getItem(position);
                 TextCell cell = (TextCell) holder.itemView;
-                cell.setColors(null, Theme.key_windowBackgroundWhiteBlueText2);
+                cell.setColors(-1, Theme.key_windowBackgroundWhiteBlueText2);
                 cell.setText(LocaleController.formatString("AddContactByPhone", R.string.AddContactByPhone, PhoneFormat.getInstance().format("+" + str)), false);
                 break;
             }

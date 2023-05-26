@@ -20,6 +20,7 @@ import org.telegram.extension.Env;
 import java.util.Objects;
 
 public class BuildVars {
+
     public static boolean DEBUG_VERSION = BuildConfig.DEBUG_VERSION;
     public static boolean LOGS_ENABLED = BuildConfig.DEBUG_VERSION;
     public static boolean DEBUG_PRIVATE_VERSION = BuildConfig.DEBUG_PRIVATE_VERSION;
@@ -71,7 +72,6 @@ public class BuildVars {
     }
 
     private static Boolean standaloneApp;
-
     public static boolean isStandaloneApp() {
         if (standaloneApp == null) {
             standaloneApp = ApplicationLoader.applicationContext != null && "org.telegram.messenger.web".equals(ApplicationLoader.applicationContext.getPackageName());
@@ -80,7 +80,6 @@ public class BuildVars {
     }
 
     private static Boolean betaApp;
-
     public static boolean isBetaApp() {
         if (betaApp == null) {
             betaApp = ApplicationLoader.applicationContext != null && "org.telegram.messenger.beta".equals(ApplicationLoader.applicationContext.getPackageName());
