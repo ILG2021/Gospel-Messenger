@@ -368,7 +368,6 @@
     <string name="ActionTakeScreenshootYou">អ្នកបានថតអេក្រង់!</string>
     <string name="EncryptedChatStartedIncoming">អ្នកបានចូលរួមការជជែកសម្ងាត់។</string>
     <string name="EncryptedChatStartedOutgoing">%s បានចូលរួមការជជែកសម្ងាត់របស់អ្នក។</string>
-    <string name="AppName">Телеграмма</string>
     <string name="EncryptionRejected">ការជជែកសម្ងាត់ត្រូវបានលុបចោល</string>
     <string name="ActionYouAddUser">អ្នកបានបន្ថែម un2</string>
     <string name="Draft">សេចក្តីព្រាង</string>
@@ -397,7 +396,6 @@
     <string name="UseProxySponsor">អ្នកឧបត្ថម្ភប្រូកស៊ី</string>
     <string name="MarkAsUnread">សម្គាល់ថាមិនបានអាន</string>
     <string name="MarkAsRead">សម្គាល់ថាបានអាន</string>
-    <string name="AppNameBeta">តេឡេក្រាម</string>
     <string name="formatterDay24H">HH: ម</string>
     <string name="NoChats">ស្វាគមន៍មកកាន់តេឡេក្រាម</string>
     <string name="NoChatsContactsHelp">ចាប់ផ្តើមផ្ញើសារដោយចុចលើទំនាក់ទំនងរបស់អ្នកខាងក្រោម។</string>
@@ -4329,20 +4327,5 @@
     <string name="VoipGroupCalling">កំពុង​ហៅ...</string>
     <string name="VoipGroupCallMember">ហៅសមាជិក</string>
     <string name="VoipGroupCallAll">ហៅ​ទូរសព្ទ​ទាំងអស់</string>
-    <string name="TimeRecord">កំណត់ត្រាពេលវេលា</string>
-    <string name="TimeRecordExportToSheet">នាំចេញទៅ Google សន្លឹក</string>
-    <string name="TimeRecordClear">ជម្រះ​កំណត់ត្រា​ពេល​វេលា</string>
-    <string name="TimeRecordClearDone">កំណត់ត្រាពេលវេលាត្រូវបានសម្អាត។</string>
-    <string name="TimeRecordNoData">គ្មាន​កំណត់​ត្រា​ពេល​វេលា</string>
-    <string name="TimeRecordTotalDuration">រយៈពេលសរុប៖</string>
-    <string name="TimeRecordExport">នាំចេញ</string>
-    <string name="TimeRecordWriteSheetPrompt">អ្នក​គួរ​តែ​ផ្តល់​សិទ្ធិ​សរសេរ​សន្លឹក​របស់​អ្នក​មុន​ពេល​នាំ​ចេញ ហើយ​សូម​កត់​សម្គាល់​ថា​ទិន្នន័យ​ទាំងអស់​ក្នុង​សន្លឹក​នឹង​ត្រូវ​បាន​សរសេរ​ជាន់​លើ សូម​ធានា​វា​ហើយ​បន្ត។</string>
-    <string name="TimeRecordAvatar">រូបតំណាង</string>
-    <string name="TimeRecordPhoneNo">លេខទូរសព្ទ។</string>
-    <string name="TimeRecordName">ឈ្មោះ</string>
-    <string name="TimeRecordUserName">ឈ្មោះ​អ្នក​ប្រើ</string>
-    <string name="TimeRecordDuration">រយៈពេលសរុប</string>
-    <string name="TimeRecordTimestamps">ត្រាពេលវេលា</string>
-    <string name="TimeRecordLastExists">កំណត់​ត្រា​ពេល​វេលា​មាន បើ​អ្នក​បន្ត វា​នឹង​ត្រូវ​បាន​សរសេរ​ជាន់​លើ តើ​អ្នក​ប្រាកដ​ជា​បន្ត​ឬ?</string>
-    <string name="TimeRecordWriteSheetHint">សូម​បញ្ចូល Google Sheet Url</string>
+
 </resources>

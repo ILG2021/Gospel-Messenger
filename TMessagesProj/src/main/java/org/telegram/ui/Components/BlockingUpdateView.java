@@ -241,7 +241,7 @@ public class BlockingUpdateView extends FrameLayout implements NotificationCente
             String fileName = FileLoader.getAttachFileName(document);
             File f = FileLoader.getInstance(UserConfig.selectedAccount).getPathToAttach(document, true);
             if (exists = f.exists()) {
-                Intent intent = new Intent(Intent.ACTION_VIEW);
+                /*Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 
                 if (Build.VERSION.SDK_INT >= 24) {
@@ -253,7 +253,7 @@ public class BlockingUpdateView extends FrameLayout implements NotificationCente
                     activity.startActivityForResult(intent, 500);
                 } catch (Exception e) {
                     FileLog.e(e);
-                }
+                }*/
             }
         } catch (Exception e) {
             FileLog.e(e);

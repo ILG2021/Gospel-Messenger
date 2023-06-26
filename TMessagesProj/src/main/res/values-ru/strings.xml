@@ -4957,21 +4957,4 @@
     <string name="formatDateScheduleDay">d MMM, EEE</string>
     <string name="login_with_telegram">Войти через Telegram</string>
     <string name="telegram_passport">Telegram Passport</string>
-
-    <string name="TimeRecord">Запись времени</string>
-    <string name="TimeRecordExportToSheet">Экспорт в Google Sheet</string>
-    <string name="TimeRecordClear">Очистить запись времени</string>
-    <string name="TimeRecordClearDone">Запись времени удалена.</string>
-    <string name="TimeRecordNoData">Нет записи времени</string>
-    <string name="TimeRecordTotalDuration">Общая продолжительность:</string>
-    <string name="TimeRecordExport">Экспорт</string>
-    <string name="TimeRecordWriteSheetPrompt">Вы должны предоставить разрешение на запись в свой лист перед экспортом, и обратите внимание, что все данные в листе будут перезаписаны, пожалуйста, убедитесь в этом и продолжайте.</string>
-    <string name="TimeRecordAvatar">Аватар</string>
-    <string name="TimeRecordPhoneNo">Номер телефона</string>
-    <string name="TimeRecordName">Имя</string>
-    <string name="TimeRecordUserName">Имя пользователя</string>
-    <string name="TimeRecordDuration">Общая продолжительность</string>
-    <string name="TimeRecordTimestamps">Временные метки</string>
-    <string name="TimeRecordLastExists">Запись времени существует, если вы продолжите, она будет перезаписана, вы уверены, что продолжите?</string>
-    <string name="TimeRecordWriteSheetHint">Пожалуйста, введите URL таблицы Google</string>
 </resources>

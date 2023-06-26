@@ -78,7 +78,6 @@
     <string name="WaitingForNetwork">ကွန်ရက်ကို စောင့်နေသည်...</string>
     <string name="SentCallCode">သင့်ဖုန်းကို ကျွန်ုပ်တို့ခေါ်ဆိုနေပါသည်။ **%1$s**.ခေါ်ဆိုမှုကို လက်မခံပါက Telegram သည် အရာအားလုံးကို အလိုအလျောက် လုပ်ဆောင်ပေးမည်ဖြစ်သည်။</string>
     <string name="SmsText">သင့်ထံ SMS တစ်စောင်ပေးပို့ခြင်း။ %1$d:%2$02d</string>
-    <string name="AppName">တယ်လီဂရမ်</string>
     <string name="InvalidCode">မမှန်ကန်သောကုဒ်၊ ကျေးဇူးပြု၍ ထပ်စမ်းကြည့်ပါ။</string>
     <string name="SentAppCode">ကျွန်ုပ်တို့သည် သင့်အခြားစက်ပစ္စည်းရှိ **Telegram** အက်ပ်သို့ ကုဒ်ကို ပေးပို့ထားပါသည်။</string>
     <string name="AccountAlreadyLoggedIn">ဤအကောင့်သည် ဤအက်ပ်မှ ဝင်ရောက်ပြီးဖြစ်သည်။</string>
@@ -519,7 +518,6 @@
     <string name="UseProxySponsor">ပရောက်စီစပွန်ဆာ</string>
     <string name="MarkAsUnread">မဖတ်ရသေးသူအဖြစ် အမှတ်အသားပြုရန်</string>
     <string name="MarkAsRead">ဖတ်ပြီးကြောင်း အမှတ်အသားပြုပါ။</string>
-    <string name="AppNameBeta">တယ်လီဂရမ်</string>
     <string name="NoChats">မှကြိုဆိုပါတယ်။</string>
     <string name="NoChatsContactsHelp">အောက်ပါ သင့်အဆက်အသွယ်များထဲမှ တစ်ခုကို နှိပ်ခြင်းဖြင့် စာတိုပေးပို့ခြင်းကို စတင်ပါ။</string>
     <string name="YourContacts">တွင် သင်၏အဆက်အသွယ်များ</string>
@@ -4194,20 +4192,4 @@
     <string name="PrivacyPaymentsClearInfo">သင်သည် သင်၏ ပို့ဆောင်ရေးအချက်အလက်ကို ဖျက်နိုင်ပြီး သင်၏သိမ်းဆည်းထားသော ခရက်ဒစ်ကတ်များကို ဖယ်ရှားရန် ငွေပေးချေမှုဝန်ဆောင်မှုပေးသူအားလုံးကို ညွှန်ကြားနိုင်သည်။ Telegram သည် သင့်ခရက်ဒစ်ကတ်ဒေတာကို မည်သည့်အခါမျှ မသိမ်းဆည်းကြောင်း သတိပြုပါ။</string>
     <string name="PaymentPhoneToProvider">ငွေတောင်းခံမှုအချက်အလက်အဖြစ် ဖုန်းကို %1$s သို့ လွှဲပြောင်းပေးပါမည်။</string>
 
-    <string name="TimeRecord">အချိန်မှတ်တမ်း</string>
-    <string name="TimeRecordExportToSheet">Google Sheet သို့ ထုတ်ယူပါ။</string>
-    <string name="TimeRecordClear">အချိန်ရှင်းလင်းခြင်း</string>
-    <string name="TimeRecordClearDone">အချိန်မှတ်တမ်းကို ရှင်းလင်းထားသည်။</string>
-    <string name="TimeRecordNoData">အချိန်မှတ်တမ်းမရှိပါ</string>
-    <string name="TimeRecordTotalDuration">စုစုပေါင်းကြာချိန်-</string>
-    <string name="TimeRecordExport">ထုတ်ရန်</string>
-    <string name="TimeRecordWriteSheetPrompt">သင့်စာရွက်ကို မတင်ပို့မီ စာရေးခွင့်ပြုသင့်ပြီး စာရွက်ရှိဒေတာအားလုံးကို ဖျက်မိသွားမည်ဖြစ်ကြောင်း သတိပြုပါ၊ ကျေးဇူးပြု၍ ၎င်းကို သေချာကြည့်ပြီး ဆက်လုပ်ပါ။</string>
-    <string name="TimeRecordAvatar">ကိုယ်ပွား</string>
-    <string name="TimeRecordPhoneNo">ဖုန်းနံပါတ်</string>
-    <string name="TimeRecordName">အမည်</string>
-    <string name="TimeRecordUserName">အသုံးပြုသူအမည်</string>
-    <string name="TimeRecordDuration">စုစုပေါင်းကြာချိန်</string>
-    <string name="TimeRecordTimestamps">အချိန်တံဆိပ်တုံးများ</string>
-    <string name="TimeRecordLastExists">အချိန်မှတ်တမ်းရှိပါသည်၊ ဆက်သွားပါက၊ ၎င်းကို overwrite လုပ်မည်၊ ဆက်လုပ်ရန်သေချာပါသလား။</string>
-    <string name="TimeRecordWriteSheetHint">ကျေးဇူးပြု၍ Google Sheet Url ထည့်သွင်းပါ</string>
 </resources>

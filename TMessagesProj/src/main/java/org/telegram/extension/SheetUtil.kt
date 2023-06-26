@@ -33,19 +33,23 @@ object SheetUtil {
     }
 
     fun write(dataSheetUrl: String, values: ArrayList<List<String>>): Boolean {
-        val body: RequestBody = RequestBody.create(
-            MediaType.parse("application/json"), GsonUtils.toJson(values)
-        )
+        try {
+            val body: RequestBody = RequestBody.create(
+                MediaType.parse("application/json"), GsonUtils.toJson(values)
+            )
 
-        val request = Request.Builder().url(
-            HttpUrl.parse(Env.SHEETDB_URL)!!
-                .newBuilder()
-                .addQueryParameter("action", "write")
-                .addQueryParameter("sheet_url", dataSheetUrl).build()
-        ).post(body)
-            .build()
-        val response: Response = client.newCall(request).execute()
-        return response.isSuccessful
+            val request = Request.Builder().url(
+                HttpUrl.parse(Env.SHEETDB_URL)!!
+                    .newBuilder()
+                    .addQueryParameter("action", "write")
+                    .addQueryParameter("sheet_url", dataSheetUrl).build()
+            ).post(body)
+                .build()
+            val response: Response = client.newCall(request).execute()
+            return response.isSuccessful
+        } catch (e: Exception) {
+            return false
+        }
     }
 
     data class SheetResponse(

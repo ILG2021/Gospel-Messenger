@@ -4957,21 +4957,4 @@
     <string name="VoipGroupStartAs">Start Video Chat as...</string>
     <string name="WidgetPasscode">​\n\nNote: Your passcode will be **ignored** for widgets.</string>
     <string name="WidgetPasscodeEnable">​\n\nYour passcode **will not affect** widgets added to homescreen.</string>
-
-    <string name="TimeRecord"> Bản ghi thời gian</string>
-    <string name="TimeRecordExportToSheet">Xuất sang Google Trang tính</string>
-    <string name="TimeRecordClear">Xóa bản ghi thời gian</string>
-    <string name="TimeRecordClearDone">Bản ghi thời gian bị xóa.</string>
-    <string name="TimeRecordNoData">Không có bản ghi thời gian nào</string>
-    <string name="TimeRecordTotalDuration">Tổng thời lượng:</string>
-    <string name="TimeRecordExport">Xuất</string>
-    <string name="TimeRecordWriteSheetPrompt">Bạn nên cấp quyền ghi trang tính của mình trước khi xuất và vui lòng lưu ý rằng tất cả dữ liệu trong trang tính sẽ bị ghi đè, hãy đảm bảo và tiếp tục.</string>
-    <string name="TimeRecordAvatar">Hình đại diện</string>
-    <string name="TimeRecordPhoneNo">Số điện thoại</string>
-    <string name="TimeRecordName">Tên</string>
-    <string name="TimeRecordUserName">Tên người dùng</string>
-    <string name="TimeRecordDuration">Tổng thời lượng</string>
-    <string name="TimeRecordTimestamps">Dấu thời gian</string>
-    <string name="TimeRecordLastExists">Bản ghi thời gian tồn tại, nếu bạn tiếp tục, nó sẽ bị ghi đè, bạn có chắc chắn tiếp tục không?</string>
-    <string name="TimeRecordWriteSheetHint"> Vui lòng nhập Url Google Trang tính</string>
 </resources>

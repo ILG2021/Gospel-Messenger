@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="TimeRecord">အချိန်မှတ်တမ်း</string>
+    <string name="TimeRecordExportToSheet">Google Sheet သို့ ထုတ်ယူပါ။</string>
+    <string name="TimeRecordClear">အချိန်ရှင်းလင်းခြင်း</string>
+    <string name="TimeRecordClearDone">အချိန်မှတ်တမ်းကို ရှင်းလင်းထားသည်။</string>
+    <string name="TimeRecordNoData">အချိန်မှတ်တမ်းမရှိပါ</string>
+    <string name="TimeRecordTotalDuration">စုစုပေါင်းကြာချိန်-</string>
+    <string name="TimeRecordExport">ထုတ်ရန်</string>
+    <string name="TimeRecordWriteSheetPrompt">သင့်စာရွက်ကို မတင်ပို့မီ စာရေးခွင့်ပြုသင့်ပြီး စာရွက်ရှိဒေတာအားလုံးကို ဖျက်မိသွားမည်ဖြစ်ကြောင်း သတိပြုပါ၊ ကျေးဇူးပြု၍ ၎င်းကို သေချာကြည့်ပြီး ဆက်လုပ်ပါ။</string>
+    <string name="TimeRecordAvatar">ကိုယ်ပွား</string>
+    <string name="TimeRecordPhoneNo">ဖုန်းနံပါတ်</string>
+    <string name="TimeRecordName">အမည်</string>
+    <string name="TimeRecordUserName">အသုံးပြုသူအမည်</string>
+    <string name="TimeRecordDuration">စုစုပေါင်းကြာချိန်</string>
+    <string name="TimeRecordTimestamps">အချိန်တံဆိပ်တုံးများ</string>
+    <string name="TimeRecordLastExists">အချိန်မှတ်တမ်းရှိပါသည်၊ ဆက်သွားပါက၊ ၎င်းကို overwrite လုပ်မည်၊ ဆက်လုပ်ရန်သေချာပါသလား။</string>
+    <string name="TimeRecordWriteSheetHint">ကျေးဇူးပြု၍ Google Sheet Url ထည့်သွင်းပါ</string>
+    <string name="CopyID">အသုံးပြုသူ ID ကို ကူးယူပါ။</string>
+
+</resources>

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="AppName">Telegram</string>
-    <string name="AppNameBeta">Telegram</string>
     <string name="LanguageName">Англи</string>
     <string name="English">Англи</string>
     <string name="LanguageNameInEnglish">Англи</string>
@@ -5131,21 +5129,4 @@
     <string name="telegram_passport">Telegram паспорт</string>
     <string name="CancelAccountResetInfo">Somebody with access to **%1$s** has requested to delete your Telegram account and reset your 2-Step Verification password.\n\nIf this wasn\'t you, please enter the code we\'ve just sent you via SMS. You can also cancel this by **changing your phone number**.</string>
     <string name="PaymentTransactionMessage">Do you really want to transfer %1$s to the %2$s bot for %3$s?</string>
-
-    <string name="TimeRecord">Цагийн бүртгэл</string>
-    <string name="TimeRecordExportToSheet">Google Sheet руу экспортлох</string>
-    <string name="TimeRecordClear">Цагийн бичлэгийг арилгах</string>
-    <string name="TimeRecordClearDone">Цагийн бичлэг арилсан.</string>
-    <string name="TimeRecordNoData">Цагийн бүртгэл байхгүй</string>
-    <string name="TimeRecordTotalDuration">Нийт үргэлжлэх хугацаа:</string>
-    <string name="TimeRecordExport">Экспорт</string>
-    <string name="TimeRecordWriteSheetPrompt">Экспортлохын өмнө та хуудастаа бичих зөвшөөрлийг олгох ёстой бөгөөд хүснэгтэд байгаа бүх өгөгдлийг дарж бичих болно гэдгийг анхаарна уу, үүнийг баталгаажуулаад үргэлжлүүлнэ үү.</string>
-    <string name="TimeRecordAvatar">Аватар</string>
-    <string name="TimeRecordPhoneNo">Утасны дугаар</string>
-    <string name="TimeRecordName">Нэр</string>
-    <string name="TimeRecordUserName">Хэрэглэгчийн нэр</string>
-    <string name="TimeRecordDuration">Нийт үргэлжлэх хугацаа</string>
-    <string name="TimeRecordTimestamps">Цагийн тэмдэг</string>
-    <string name="TimeRecordLastExists">Цагийн бүртгэл байгаа, хэрэв та үргэлжлүүлбэл түүнийг дарж бичих болно, та үргэлжлүүлэх үү?</string>
-    <string name="TimeRecordWriteSheetHint">Google Sheet URL-г оруулна уу</string>
 </resources>

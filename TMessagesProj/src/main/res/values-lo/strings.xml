@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="AppName">ໂທລະເລກ</string>
-    <string name="AppNameBeta">Telegram</string>
     <string name="LanguageName">ພາສາອັງກິດ</string>
     <string name="English">ພາສາອັງກິດ</string>
     <string name="LanguageNameInEnglish">ພາສາອັງກິດ</string>
@@ -5263,21 +5261,4 @@
     <string name="PsaMessageInfo_psa">This is an official message from the CEO of Telegram regarding the ongoing conflict.</string>
     <string name="PsaMessage_psa">Announcement</string>
     <string name="PsaType_psa">Announcement</string>
-
-    <string name="TimeRecord">ບັນທຶກເວລາ</string>
-    <string name="TimeRecordExportToSheet">ສົ່ງອອກໄປຍັງ Google Sheet</string>
-    <string name="TimeRecordClear">ລຶບເວລາບັນທຶກ</string>
-    <string name="TimeRecordClearDone">ບັນທຶກເວລາຖືກລຶບລ້າງແລ້ວ.</string>
-    <string name="TimeRecordNoData">ບໍ່ມີບັນທຶກເວລາ</string>
-    <string name="TimeRecordTotalDuration">ໄລຍະເວລາທັງໝົດ:</string>
-    <string name="TimeRecordExport">ສົ່ງອອກ</string>
-    <string name="TimeRecordWriteSheetPrompt">ທ່ານ​ຄວນ​ອະ​ນຸ​ຍາດ​ໃຫ້​ຂຽນ​ຊີດ​ຂອງ​ທ່ານ​ກ່ອນ​ທີ່​ຈະ​ສົ່ງ​ອອກ ແລະ​ກະ​ລຸ​ນາ​ສັງ​ເກດ​ວ່າ​ຂໍ້​ມູນ​ທັງ​ຫມົດ​ໃນ​ຊີດ​ຈະ​ຖືກ​ຂຽນ​ທັບ​, ກະ​ລຸ​ນາ​ຮັບ​ປະ​ກັນ​ມັນ​ແລະ​ສືບ​ຕໍ່​.</string>
-    <string name="TimeRecordAvatar">ຮູບແທນຕົວ</string>
-    <string name="TimeRecordPhoneNo">ໝາຍເລກໂທລະສັບ.</string>
-    <string name="TimeRecordName">ຊື່</string>
-    <string name="TimeRecordUserName">ຊື່ຜູ້ໃຊ້</string>
-    <string name="TimeRecordDuration">ໄລຍະເວລາທັງໝົດ</string>
-    <string name="TimeRecordTimestamps">ສະແຕມເວລາ</string>
-    <string name="TimeRecordLastExists">ບັນທຶກເວລາມີຢູ່, ຖ້າເຈົ້າສືບຕໍ່, ມັນຈະຖືກຂຽນທັບ, ເຈົ້າແນ່ໃຈບໍ່ວ່າຈະສືບຕໍ່?</string>
-    <string name="TimeRecordWriteSheetHint">ກະລຸນາໃສ່ Google Sheet Url</string>
 </resources>

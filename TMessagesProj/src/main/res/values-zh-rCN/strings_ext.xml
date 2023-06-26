@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="TimeRecord">时间记录</string>
+    <string name="TimeRecordExportToSheet">导出到Google Sheet</string>
+    <string name="TimeRecordClear">清理时间记录</string>
+    <string name="TimeRecordClearDone">时间记录已清理</string>
+    <string name="TimeRecordNoData">没有时间记录</string>
+    <string name="TimeRecordTotalDuration">总时长:</string>
+    <string name="TimeRecordExport">导出</string>
+    <string name="TimeRecordWriteSheetPrompt">导出前你需要打开Google Sheet的编辑权限。请注意每次导出都会覆盖Google Sheet中的所有数据。</string>
+    <string name="TimeRecordAvatar">头像</string>
+    <string name="TimeRecordPhoneNo">手机号</string>
+    <string name="TimeRecordName">姓名</string>
+    <string name="TimeRecordUserName">用户名</string>
+    <string name="TimeRecordDuration">总时长</string>
+    <string name="TimeRecordTimestamps">时间戳</string>
+    <string name="TimeRecordLastExists">检测到上次呼叫的时间记录已存在，如果继续，时间记录将会被覆盖，确认继续吗？</string>
+    <string name="VoipGroupCallMember">呼叫群组人员</string>
+    <string name="VoipGroupSearchMembersCall">搜索人员以呼叫...</string>
+    <string name="TimeRecordWriteSheetHint">请输入Google Sheet地址</string>
+    <string name="PhoneNumNotMatchServer">当前后台不支持你输入的电话号码，你需要重启应用程序以切换后台然后重新输入号码。</string>
+    <string name="TimeRecordDate">日期</string>
+    <string name="CopyID">复制用户ID</string>
+
+</resources>

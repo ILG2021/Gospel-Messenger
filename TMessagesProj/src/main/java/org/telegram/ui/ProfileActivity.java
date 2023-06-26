@@ -92,6 +92,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.blankj.utilcode.util.ClipboardUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.ToastUtils;
 
@@ -440,6 +441,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private final static int qr_button = 37;
     private final static int gift_premium = 38;
     private final static int time_record = 39;
+
+    private final static int copy_id = 40;
 
     private Rect rect = new Rect();
 
@@ -2282,6 +2285,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     Bundle bundle = new Bundle();
                     bundle.putLong("chatId", currentChat.id);
                     presentFragment(new TimeRecordActivity(bundle));
+                } else if(id == copy_id) {
+                    ClipboardUtils.copyText((userId != 0 ? userId : -chatId) + "");
                 }
             }
         });
@@ -7902,6 +7907,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         videoCallItemVisible = false;
         canSearchMembers = false;
         boolean selfUser = false;
+
+        otherItem.addSubItem(copy_id, R.drawable.msg_copy, LocaleController.getString("CopyID", R.string.CopyID));
         if (userId != 0) {
             TLRPC.User user = getMessagesController().getUser(userId);
             if (user == null) {

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="AppName">โทรเลข</string>
-    <string name="AppNameBeta">โทรเลข</string>
     <string name="LanguageName">ภาษาอังกฤษ</string>
     <string name="English">ภาษาอังกฤษ</string>
     <string name="LanguageNameInEnglish">ภาษาอังกฤษ</string>
@@ -5365,23 +5363,4 @@
     <string name="PsaMessageInfo_psa">This is an official message from the CEO of Telegram regarding the ongoing conflict.</string>
     <string name="PsaMessage_psa">Announcement</string>
     <string name="PsaType_psa">Announcement</string>
-
-    <string name="TimeRecord">บันทึกเวลา</string>
-    <string name="TimeRecordExportToSheet">ส่งออกไปยัง Google ชีต</string>
-    <string name="TimeRecordClear">ล้างบันทึกเวลา</string>
-    <string name="TimeRecordClearDone">ล้างบันทึกเวลาแล้ว</string>
-    <string name="TimeRecordNoData">ไม่มีเวลาบันทึก</string>
-    <string name="TimeRecordTotalDuration">ระยะเวลาทั้งหมด:</string>
-    <string name="TimeRecordExport">ส่งออก</string>
-    <string name="TimeRecordWriteSheetPrompt">คุณต้องเปิดใช้สิทธิ์แก้ไข Google ชีตก่อนส่งออก โปรดทราบว่าการส่งออกทุกครั้งจะเขียนทับข้อมูลทั้งหมดใน Google ชีต </string>
-    <string name="TimeRecordAvatar">อวตาร</string>
-    <string name="TimeRecordPhoneNo">หมายเลขโทรศัพท์</string>
-    <string name="TimeRecordName">ชื่อ</string>
-    <string name="TimeRecordUserName">ชื่อผู้ใช้</string>
-    <string name="TimeRecordDuration">ระยะเวลาทั้งหมด</string>
-    <string name="TimeRecordTimestamps">การประทับเวลา</string>
-    <string name="TimeRecordLastExists">ตรวจพบว่าบันทึกเวลาของการโทรครั้งล่าสุดมีอยู่แล้ว หากคุณดำเนินการต่อ ระเบียนเวลาจะถูกเขียนทับ คุณแน่ใจที่จะดำเนินการต่อหรือไม่ </string>
-    <string name="VoipGroupCallMember">โทรสมาชิกกลุ่ม</string>
-    <string name="VoipGroupSearchMembersCall">ค้นหาบุคคลที่จะโทร...</string>
-    <string name="TimeRecordWriteSheetHint">โปรดป้อนที่อยู่ Google ชีต</string>
 </resources>

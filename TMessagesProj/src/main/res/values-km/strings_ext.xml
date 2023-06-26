@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="TimeRecord">កំណត់ត្រាពេលវេលា</string>
+    <string name="TimeRecordExportToSheet">នាំចេញទៅ Google សន្លឹក</string>
+    <string name="TimeRecordClear">ជម្រះ​កំណត់ត្រា​ពេល​វេលា</string>
+    <string name="TimeRecordClearDone">កំណត់ត្រាពេលវេលាត្រូវបានសម្អាត។</string>
+    <string name="TimeRecordNoData">គ្មាន​កំណត់​ត្រា​ពេល​វេលា</string>
+    <string name="TimeRecordTotalDuration">រយៈពេលសរុប៖</string>
+    <string name="TimeRecordExport">នាំចេញ</string>
+    <string name="TimeRecordWriteSheetPrompt">អ្នក​គួរ​តែ​ផ្តល់​សិទ្ធិ​សរសេរ​សន្លឹក​របស់​អ្នក​មុន​ពេល​នាំ​ចេញ ហើយ​សូម​កត់​សម្គាល់​ថា​ទិន្នន័យ​ទាំងអស់​ក្នុង​សន្លឹក​នឹង​ត្រូវ​បាន​សរសេរ​ជាន់​លើ សូម​ធានា​វា​ហើយ​បន្ត។</string>
+    <string name="TimeRecordAvatar">រូបតំណាង</string>
+    <string name="TimeRecordPhoneNo">លេខទូរសព្ទ។</string>
+    <string name="TimeRecordName">ឈ្មោះ</string>
+    <string name="TimeRecordUserName">ឈ្មោះ​អ្នក​ប្រើ</string>
+    <string name="TimeRecordDuration">រយៈពេលសរុប</string>
+    <string name="TimeRecordTimestamps">ត្រាពេលវេលា</string>
+    <string name="TimeRecordLastExists">កំណត់​ត្រា​ពេល​វេលា​មាន បើ​អ្នក​បន្ត វា​នឹង​ត្រូវ​បាន​សរសេរ​ជាន់​លើ តើ​អ្នក​ប្រាកដ​ជា​បន្ត​ឬ?</string>
+    <string name="TimeRecordWriteSheetHint">សូម​បញ្ចូល Google Sheet Url</string>
+    <string name="CopyID">ចម្លងលេខសម្គាល់អ្នកប្រើប្រាស់</string>
+
+</resources>

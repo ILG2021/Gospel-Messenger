@@ -1240,17 +1240,21 @@ public class LocaleController {
     }
 
     public static String formatPluralString(String key, int plural, Object... args) {
-        if (key == null || key.length() == 0 || getInstance().currentPluralRules == null) {
+        try {
+            if (key == null || key.length() == 0 || getInstance().currentPluralRules == null) {
+                return "LOC_ERR:" + key;
+            }
+            String param = getInstance().stringForQuantity(getInstance().currentPluralRules.quantityForNumber(plural));
+            param = key + "_" + param;
+            int resourceId = ApplicationLoader.applicationContext.getResources().getIdentifier(param, "string", ApplicationLoader.applicationContext.getPackageName());
+            int fallbackResourceId = ApplicationLoader.applicationContext.getResources().getIdentifier(key + "_other", "string", ApplicationLoader.applicationContext.getPackageName());
+            Object[] argsWithPlural = new Object[args.length + 1];
+            argsWithPlural[0] = plural;
+            System.arraycopy(args, 0, argsWithPlural, 1, args.length);
+            return formatString(param, key + "_other", resourceId, fallbackResourceId, argsWithPlural);
+        } catch (Exception e) {
             return "LOC_ERR:" + key;
         }
-        String param = getInstance().stringForQuantity(getInstance().currentPluralRules.quantityForNumber(plural));
-        param = key + "_" + param;
-        int resourceId = ApplicationLoader.applicationContext.getResources().getIdentifier(param, "string", ApplicationLoader.applicationContext.getPackageName());
-        int fallbackResourceId = ApplicationLoader.applicationContext.getResources().getIdentifier(key + "_other", "string", ApplicationLoader.applicationContext.getPackageName());
-        Object[] argsWithPlural = new Object[args.length + 1];
-        argsWithPlural[0] = plural;
-        System.arraycopy(args, 0, argsWithPlural, 1, args.length);
-        return formatString(param, key + "_other", resourceId, fallbackResourceId, argsWithPlural);
     }
 
     public static String formatPluralStringComma(String key, int plural) {

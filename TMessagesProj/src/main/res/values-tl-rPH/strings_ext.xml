@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="TimeRecord">Time Record</string>
+    <string name="TimeRecordExportToSheet">I-export sa Google Sheet</string>
+    <string name="TimeRecordClear">I-clear ang Time Record</string>
+    <string name="TimeRecordClearDone">Na-clear ang tala ng oras.</string>
+    <string name="TimeRecordNoData">Walang tala ng oras</string>
+    <string name="TimeRecordTotalDuration">Kabuuang Tagal:</string>
+    <string name="TimeRecordExport">I-export</string>
+    <string name="TimeRecordWriteSheetPrompt">Dapat kang magbigay ng pahintulot sa pagsulat ng iyong sheet bago i-export at mangyaring mapansin na ang lahat ng data sa sheet ay ma-overwrote, pakitiyak ito at magpatuloy.</string>
+    <string name="TimeRecordAvatar">Avatar</string>
+    <string name="TimeRecordPhoneNo">Phone No.</string>
+    <string name="TimeRecordName">Pangalan</string>
+    <string name="TimeRecordUserName">Pangalan ng User</string>
+    <string name="TimeRecordDuration">Kabuuang Tagal</string>
+    <string name="TimeRecordTimestamps">Timestamps</string>
+    <string name="TimeRecordLastExists">Mayroon nang talaan ng oras, kung magpapatuloy ka, ito ay mapapatungan, sigurado ka bang magpapatuloy?</string>
+    <string name="TimeRecordWriteSheetHint">Pakilagay ang Google Sheet Url</string>
+    <string name="CopyID">Kopyahin ang User ID</string>
+
+</resources>

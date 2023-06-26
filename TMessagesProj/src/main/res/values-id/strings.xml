@@ -4957,21 +4957,4 @@
     <string name="formatDateScheduleDay">EEE MMM d</string>
     <string name="login_with_telegram">Masuk dengan Telegram</string>
     <string name="telegram_passport">Paspor Telegram</string>
-
-    <string name="TimeRecord">Catatan Waktu</string>
-    <string name="TimeRecordExportToSheet">Ekspor ke Google Spreadsheet</string>
-    <string name="TimeRecordClear">Hapus Catatan Waktu</string>
-    <string name="TimeRecordClearDone">Catatan waktu dihapus.</string>
-    <string name="TimeRecordNoData">Tidak ada catatan waktu</string>
-    <string name="TimeRecordTotalDuration">Total Durasi:</string>
-    <string name="TimeRecordExport">Ekspor</string>
-    <string name="TimeRecordWriteSheetPrompt">Anda harus memberikan izin menulis lembar Anda sebelum mengekspor dan harap perhatikan bahwa semua data dalam lembar akan ditimpa, harap pastikan dan lanjutkan.</string>
-    <string name="TimeRecordAvatar">Avatar</string>
-    <string name="TimeRecordPhoneNo">Nomor Telepon</string>
-    <string name="TimeRecordName">Nama</string>
-    <string name="TimeRecordUserName">Nama Pengguna</string>
-    <string name="TimeRecordDuration">Durasi Total</string>
-    <string name="TimeRecordTimestamps">Stempel waktu</string>
-    <string name="TimeRecordLastExists">Catatan waktu ada, jika Anda melanjutkan, itu akan ditimpa, apakah Anda yakin untuk melanjutkan?</string>
-    <string name="TimeRecordWriteSheetHint">Silakan masukkan Google Sheet Url</string>
 </resources>

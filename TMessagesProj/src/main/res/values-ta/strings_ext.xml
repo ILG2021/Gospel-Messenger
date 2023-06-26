@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="TimeRecord">நேரப் பதிவு</string>
+    <string name="TimeRecordExportToSheet">Google Sheetக்கு ஏற்றுமதி செய்யவும்</string>
+    <string name="TimeRecordClear">நேரப் பதிவை அழி</string>
+    <string name="TimeRecordClearDone">நேர பதிவு அழிக்கப்பட்டது.</string>
+    <string name="TimeRecordNoData">நேர பதிவு இல்லை</string>
+    <string name="TimeRecordTotalDuration">மொத்த காலம்:</string>
+    <string name="TimeRecordExport">ஏற்றுமதி</string>
+    <string name="TimeRecordWriteSheetPrompt">ஏற்றுமதிக்கு முன் உங்கள் தாளின் எழுத்து அனுமதியை நீங்கள் வழங்க வேண்டும், மேலும் தாளில் உள்ள எல்லா தரவும் மேலெழுதப்படும் என்பதைக் கவனியுங்கள், அதை உறுதிசெய்து தொடரவும்.</string>
+    <string name="TimeRecordAvatar">Avatar</string>
+    <string name="TimeRecordPhoneNo">தொலைபேசி எண்.</string>
+    <string name="TimeRecordName">பெயர்</string>
+    <string name="TimeRecordUserName">பயனர் பெயர்</string>
+    <string name="TimeRecordDuration">மொத்த கால அளவு</string>
+    <string name="TimeRecordTimestamps">நேர முத்திரைகள்</string>
+    <string name="TimeRecordLastExists">நேரப் பதிவு உள்ளது, தொடர்ந்தால், மேலெழுதப்படும், தொடர்வீர்களா?</string>
+    <string name="TimeRecordWriteSheetHint">Google Sheet Url ஐ உள்ளிடவும்</string>
+    <string name="CopyID">பயனர் ஐடியை நகலெடுக்கவும்</string>
+
+</resources>
