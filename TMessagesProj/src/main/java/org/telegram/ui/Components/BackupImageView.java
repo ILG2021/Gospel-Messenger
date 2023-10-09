@@ -17,7 +17,6 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.util.AttributeSet;
 import android.view.View;
 
 import org.telegram.messenger.ImageLocation;
@@ -42,7 +41,7 @@ public class BackupImageView extends View {
 
     public BackupImageView(Context context) {
         super(context);
-        imageReceiver = new ImageReceiver(this);
+        imageReceiver = createImageReciever();
         imageReceiver.setAllowLoadingOnAttachedOnly(true);
         imageReceiver.setDelegate((imageReceiver1, set, thumb, memCache) -> {
             if (set && !thumb) {
@@ -51,14 +50,8 @@ public class BackupImageView extends View {
         });
     }
 
-    public BackupImageView(Context context, AttributeSet attributeSet) {
-        super(context, attributeSet);
-        imageReceiver = new ImageReceiver(this);
-        imageReceiver.setDelegate((imageReceiver1, set, thumb, memCache) -> {
-            if (set && !thumb) {
-                checkCreateBlurredImage();
-            }
-        });
+    protected ImageReceiver createImageReciever() {
+        return new ImageReceiver(this);
     }
 
     public void setBlurAllowed(boolean blurAllowed) {
@@ -145,6 +138,10 @@ public class BackupImageView extends View {
         }
         imageReceiver.setImage(imageLocation, imageFilter, null, null, thumb, size, null, parentObject, cacheType);
         onNewImageSet();
+    }
+
+    public void clearImage() {
+        imageReceiver.clearImage();
     }
 
     public void setForUserOrChat(TLObject object, AvatarDrawable avatarDrawable) {
@@ -240,7 +237,7 @@ public class BackupImageView extends View {
     }
 
     public void setRoundRadius(int tl, int tr, int bl, int br) {
-        imageReceiver.setRoundRadius(tl, tr, bl, br);
+        imageReceiver.setRoundRadius(tl, tr, bl ,br);
         if (blurAllowed) {
             blurImageReceiver.setRoundRadius(tl, tr, bl, br);
         }
@@ -347,7 +344,7 @@ public class BackupImageView extends View {
     }
 
     ValueAnimator roundRadiusAnimator;
-
+    
     public void animateToRoundRadius(int animateToRad) {
         if (getRoundRadius()[0] != animateToRad) {
             if (roundRadiusAnimator != null) {

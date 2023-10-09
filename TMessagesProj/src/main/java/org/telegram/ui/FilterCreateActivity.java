@@ -507,7 +507,7 @@ public class FilterCreateActivity extends BaseFragment {
 
             final int maxCount = getUserConfig().isPremium() ? getMessagesController().dialogFiltersChatsLimitPremium : getMessagesController().dialogFiltersChatsLimitDefault;
             if (peers.size() > maxCount) {
-                showDialog(new LimitReachedBottomSheet(this, getContext(), LimitReachedBottomSheet.TYPE_CHATS_IN_FOLDER, currentAccount));
+                showDialog(new LimitReachedBottomSheet(this, getContext(), LimitReachedBottomSheet.TYPE_CHATS_IN_FOLDER, currentAccount, null));
                 return;
             }
 
@@ -1974,6 +1974,7 @@ public class FilterCreateActivity extends BaseFragment {
         float width, height;
 
         private boolean outline;
+        private int color;
 
         public NewSpan(boolean outline) {
             this.outline = outline;
@@ -1992,6 +1993,17 @@ public class FilterCreateActivity extends BaseFragment {
                 bgPaint.setStyle(Paint.Style.FILL);
                 textPaint.setTextSize(dp(12));
             }
+        }
+
+        public NewSpan(float textSize) {
+            this.outline = false;
+            textPaint.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
+            bgPaint.setStyle(Paint.Style.FILL);
+            textPaint.setTextSize(dp(textSize));
+        }
+
+        public void setColor(int color) {
+            this.color = color;
         }
 
         public StaticLayout makeLayout() {
@@ -2013,7 +2025,10 @@ public class FilterCreateActivity extends BaseFragment {
         public void draw(@NonNull Canvas canvas, CharSequence text, int start, int end, float _x, int top, int _y, int bottom, @NonNull Paint paint) {
             makeLayout();
 
-            int color = paint.getColor();
+            int color = this.color;
+            if (color == 0) {
+                color = paint.getColor();
+            }
             bgPaint.setColor(color);
             if (outline) {
                 textPaint.setColor(color);
@@ -2452,23 +2467,23 @@ public class FilterCreateActivity extends BaseFragment {
             return true;
         }
         if ("INVITE_PEERS_TOO_MUCH".equals(err.text)) {
-            new LimitReachedBottomSheet(fragment, fragment.getContext(), LimitReachedBottomSheet.TYPE_CHATS_IN_FOLDER, fragment.getCurrentAccount()).show();
+            new LimitReachedBottomSheet(fragment, fragment.getContext(), LimitReachedBottomSheet.TYPE_CHATS_IN_FOLDER, fragment.getCurrentAccount(), null).show();
         } else if ("PEERS_LIST_EMPTY".equals(err.text)) {
             factory.createErrorBulletin(LocaleController.getString("FolderLinkNoChatsError", R.string.FolderLinkNoChatsError)).show();
         } else if ("USER_CHANNELS_TOO_MUCH".equals(err.text)) {
             factory.createErrorBulletin(LocaleController.getString("FolderLinkOtherAdminLimitError", R.string.FolderLinkOtherAdminLimitError)).show();
         } else if ("CHANNELS_TOO_MUCH".equals(err.text)) {
-            new LimitReachedBottomSheet(fragment, fragment.getContext(), LimitReachedBottomSheet.TYPE_TO0_MANY_COMMUNITIES, fragment.getCurrentAccount()).show();
+            new LimitReachedBottomSheet(fragment, fragment.getContext(), LimitReachedBottomSheet.TYPE_TO0_MANY_COMMUNITIES, fragment.getCurrentAccount(), null).show();
         } else if ("INVITES_TOO_MUCH".equals(err.text)) {
-            new LimitReachedBottomSheet(fragment, fragment.getContext(), LimitReachedBottomSheet.TYPE_FOLDER_INVITES, fragment.getCurrentAccount()).show();
+            new LimitReachedBottomSheet(fragment, fragment.getContext(), LimitReachedBottomSheet.TYPE_FOLDER_INVITES, fragment.getCurrentAccount(), null).show();
         } else if ("CHATLISTS_TOO_MUCH".equals(err.text)) {
-            new LimitReachedBottomSheet(fragment, fragment.getContext(), LimitReachedBottomSheet.TYPE_SHARED_FOLDERS, fragment.getCurrentAccount()).show();
+            new LimitReachedBottomSheet(fragment, fragment.getContext(), LimitReachedBottomSheet.TYPE_SHARED_FOLDERS, fragment.getCurrentAccount(), null).show();
         } else if ("INVITE_SLUG_EXPIRED".equals(err.text)) {
             factory.createErrorBulletin(LocaleController.getString("NoFolderFound", R.string.NoFolderFound)).show();
         } else if ("FILTER_INCLUDE_TOO_MUCH".equals(err.text)) {
-            new LimitReachedBottomSheet(fragment, fragment.getContext(), LimitReachedBottomSheet.TYPE_CHATS_IN_FOLDER, fragment.getCurrentAccount()).show();
+            new LimitReachedBottomSheet(fragment, fragment.getContext(), LimitReachedBottomSheet.TYPE_CHATS_IN_FOLDER, fragment.getCurrentAccount(), null).show();
         } else if ("DIALOG_FILTERS_TOO_MUCH".equals(err.text)) {
-            new LimitReachedBottomSheet(fragment, fragment.getContext(), LimitReachedBottomSheet.TYPE_FOLDERS, fragment.getCurrentAccount()).show();
+            new LimitReachedBottomSheet(fragment, fragment.getContext(), LimitReachedBottomSheet.TYPE_FOLDERS, fragment.getCurrentAccount(), null).show();
         } else {
             factory.createErrorBulletin(LocaleController.getString("UnknownError", R.string.UnknownError)).show();
         }
