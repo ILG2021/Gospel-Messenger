@@ -2857,7 +2857,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                 needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("ChooseCountry", R.string.ChooseCountry));
                 needHideProgress(false);
                 return;
-            } else if (countryState == COUNTRY_STATE_INVALID && !BuildVars.DEBUG_VERSION) {
+            } else if (countryState == COUNTRY_STATE_INVALID && !BuildVars.DEBUG_VERSION && !getConnectionsManager().isTestBackend()) {
                 needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("WrongCountry", R.string.WrongCountry));
                 needHideProgress(false);
                 return;
