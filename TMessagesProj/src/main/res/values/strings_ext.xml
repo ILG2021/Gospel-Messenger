@@ -25,4 +25,6 @@
     <string name="VoipGroupCalling">Calling...</string>
     <string name="PhoneNumNotMatchServer">The current backend does not support the phone number you entered, you need to restart the app to switch the backend and reenter your phone number.</string>
     <string name="CopyID">Copy User ID</string>
+    <string name="PrivacyPolicyUrl">https://ilg2021.github.io/Telegram-Policy/index.html</string>
+
 </resources>

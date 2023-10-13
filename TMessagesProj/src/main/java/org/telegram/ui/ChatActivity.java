@@ -7194,7 +7194,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 updateReactionsMentionButton(false);
             }
         }
-
+        jumpToGroupCall();
         return fragmentView;
     }
 
@@ -16961,6 +16961,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
                 checkGroupCallJoin(false);
             }
+            jumpToGroupCall();
         } else if (id == NotificationCenter.didLoadChatInviter) {
             long chatId = (Long) args[0];
             if (dialog_id == -chatId && chatInviterId == 0) {
@@ -32261,5 +32262,49 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             clip[0] = (int) chatListViewPaddingTop - AndroidUtilities.dp(4);
             clip[1] = chatListView.getMeasuredHeight() - (chatListView.getPaddingBottom() - AndroidUtilities.dp(3));
         }
+    }
+
+    private void jumpToGroupCall() {
+
+        if (getArguments().getBoolean("group_call_ringing") && getGroupCall() != null) {
+
+            if (VoIPService.getSharedInstance() == null) {
+
+                VoIPService.callIShouldHavePutIntoIntent = null;
+
+                VoIPHelper.lastCallTime = 0;
+
+                VoIPHelper.startCall(getMessagesController().getChat(getGroupCall().chatId), null, null, false, getParentActivity(), this, getAccountInstance());
+
+                getArguments().remove("group_call_ringing");
+
+            } else {
+
+                NotificationCenter.getGlobalInstance().addObserver(new NotificationCenter.NotificationCenterDelegate() {
+
+                    @Override
+
+                    public void didReceivedNotification(int id, int account, Object... args) {
+
+                        VoIPService.callIShouldHavePutIntoIntent = null;
+
+                        VoIPHelper.lastCallTime = 0;
+
+                        VoIPHelper.startCall(getMessagesController().getChat(getGroupCall().chatId), null, null, false, getParentActivity(), ChatActivity.this, getAccountInstance());
+
+                        NotificationCenter.getGlobalInstance().removeObserver(this, NotificationCenter.didEndCall);
+
+                        getArguments().remove("group_call_ringing");
+
+                    }
+
+                }, NotificationCenter.didEndCall);
+
+                VoIPService.getSharedInstance().endGroupCallRinging();
+
+            }
+
+        }
+
     }
 }

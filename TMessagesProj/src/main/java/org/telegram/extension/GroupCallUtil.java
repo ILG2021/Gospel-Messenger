@@ -387,7 +387,10 @@ public class GroupCallUtil {
     }
 
     private void sendMessage(String message, long chatId) {
-        getSendMessagesHelper().sendMessage(message, -chatId, null, null, null, true, null, null, null, true, 0, null, false);
+        SendMessagesHelper.SendMessageParams params = new SendMessagesHelper.SendMessageParams();
+        params.message = message;
+        params.peer = -chatId;
+        getSendMessagesHelper().sendMessage(params);
     }
 
     private void sendMessage(String message, long chatId, TLRPC.User user) {
@@ -400,7 +403,12 @@ public class GroupCallUtil {
         entity.offset = 0;
         entity.length = user.first_name.length();
         entities.add(entity);
-        getSendMessagesHelper().sendMessage(message, -chatId, null, null, null, true, null, null, null, true, 0, null, false);
+
+        SendMessagesHelper.SendMessageParams params = new SendMessagesHelper.SendMessageParams();
+        params.message = message;
+        params.peer = -chatId;
+        params.entities = entities;
+        getSendMessagesHelper().sendMessage(params);
     }
 
     private SendMessagesHelper getSendMessagesHelper() {
